@@ -831,6 +831,155 @@ $f(x) = x^2\ln(1-x)$求$f^{(n)}(0), n\geq3:$
 
 
 
+%==========================================================
+\chapter[qqqq]{一元微分的几何应用}
+%==========================================================
+
+\section{单调性和极值}
+
+\begin{definition}
+    [极值]
+$f(x)$在$x_0$某一领域有定义,邻域内任意一点$x$,均有
+\[
+    f(x) \le f(x_0) \quad (\text{或} f(x) \ge f(x_0)),
+\]
+则称$f(x)$在$x_0$处取得\textbf{极大值}（或\textbf{极小值}）.
+\end{definition}
+\begin{note}
+    (1)间断点也可以是极值点，如
+    $f(x)=\begin{cases}
+        1, & x = 0, \\
+        0, & x \neq 0.
+    \end{cases}$在$x=0$处取得极大值.
+    (2)常函数处处为极值点
+\end{note}
+
+\begin{induction}
+    [单调性和极值的判断方法]
+    \textbf{单调性}：区间$(a,b)$内$f'(x)\geq0$,等号仅在有限个点成立,则$f(x)$在$(a,b)$内单调递增;递减同理.
+    \textbf{极值}：
+    
+    (1)必要条件：如果$f(x)$在$x_0$处取得极值, 则$f'(x_0) = 0$（Fermat 引理）.
+
+    (2)第一充分条件：如果$f'(x)$在$x_0$的某邻域内由正变负, 则$f(x)$在$x_0$处取得极大值; 由负变正则取得极小值.
+
+    (3)第二充分条件：如果$f'(x_0) = 0$且$f''(x_0)$存在, 则
+    \begin{itemize}
+        \item 若$f''(x_0) > 0$, 则$f(x)$在$x_0$处取得极小值;
+        \item 若$f''(x_0) < 0$, 则$f(x)$在$x_0$处取得极大值;
+        \item 若$f''(x_0) = 0$, 则需进一步判断.
+    \end{itemize}
+\end{induction}
+\begin{note}
+    $f'(x_0)=0$不代表$f(x)$在$x_0$处不变化，而是变化的幅度很小，如$f(x)=x^3$在$x=0$处.
+    
+    \textbf{判断极值的第三充分条件}：$f(x)$在$x=x_0 n$阶可导，前$n-1$阶导数在$x_0$处为0，且第$n$阶导数在$x_0$处不为0，则
+
+    当n为偶数，$f^{(n)}(x)<0$,则$f(x)$在$x_0$处取得极大值; 当n为奇数，$f^{(n)}(x)>0$, 则$f(x)$在$x_0$处取得极小值.
+\end{note}
+
+
+\section{凹凸性和拐点}
+
+\begin{definition}
+    [凹凸性和拐点]
+    \textbf{第一定义}：设函数$f(x)$在区间$I$上连续,恒有图像上两点间的弧在函数图像之上，则称图形是凹的，即：
+    \[
+    \dfrac{f(x_1) + f(x_2)}{2} > f\left(\dfrac{x_1 + x_2}{2}\right), \quad \forall x_1, x_2 \in I, x_1 \ne x_2.
+    \]
+    \textbf{第二定义}：设函数$f(x)$在区间$I$上连续,区间上任意一点处的切线在函数图像之下，则称图形是凹的,表达式略.    
+    
+    函数凹凸性改变的点叫做"拐点".
+\end{definition}
+\begin{note}
+    \textbf{拐点是图像上的点，写$(x_0,f(x_0))$},函数在该点必须连续.
+   
+    凹凸性的第一定义和第二定义是等价的，且都可以推广到多元函数的情况。
+
+    "凹"与"凸"是从函数轴正方向向下看的结果.
+\end{note}
+
+\begin{induction}
+    [凹凸性和拐点的判定]
+    \begin{itemize}
+        \item 若$f''(x) > 0$对$I$内的任意$x$成立, 则称$f(x)$在$I$内\textbf{凹}（或\textbf{凸}）;
+        \item 若$f''(x) < 0$对$I$内的任意$x$成立, 则称$f(x)$在$I$内\textbf{凸}（或\textbf{凹}）;
+        \item \textbf{判断拐点的第一充分条件}：若$f''(x_0) = 0$, 且在$x_0$的某邻域内$f''(x)$由正变负或由负变正, 则称$(x_0, f(x_0))$为函数图像的一个\textbf{拐点}.
+        \item \textbf{判断拐点的第二充分条件}：若$f''(x_0)=0, f'''(x_0) \neq 0$, 则$(x_0, f(x_0))$为函数图像的一个\textbf{拐点}.
+    \end{itemize}
+\end{induction}
+\begin{note}
+    (1)二阶导数不存在的点也可能是拐点，如$f(x)=\sqrt[3]{x}$在$x=0$处.
+
+    (2)$f(x),f'(x),f''(x)$连续时,$f(x)$的拐点就是$f'(x)$的极值点.
+\end{note}
+
+\begin{corollary}
+    曲线的可导点不可同时为极值点与拐点；不可导点可以同时为极值点和拐点.
+
+    多项式函数$f(x) = (x-a)^ng(x)(n>1,g(a)\neq 0)$,$n$为偶数, $x=a$是$f(x)$的极值点；$n$为奇数, $(a,0)$是$f(x)$的拐点.
+    
+    例如：$f_1(x) = (x-a)^2(x^2+1), f_2(x) = (x-a)^3(x^2+1)$
+\end{corollary}
+
+\section{渐近线}
+\begin{definition}
+    [三种渐近线]
+    \textbf{铅直渐近线}：如果$\lim_{x \to a^-} f(x) = \pm \infty$或$\lim_{x \to a^+} f(x) = \pm \infty$, 则称$x=a$是函数$f(x)$的一个铅直渐近线.
+
+    \textbf{水平渐近线}：如果$\lim_{x \to +\infty} f(x) = b$或$\lim_{x \to -\infty} f(x) = b$, 则称$y=b$是函数$f(x)$的一个水平渐近线.
+
+    \textbf{斜渐近线}：如果$\lim_{x \to +/-\infty} \dfrac{f(x)}{x} = k$且$\lim_{x \to +/-\infty} (f(x) - kx) = b$, 则称$y = kx + b$是函数$f(x)$的一个斜渐近线.
+\end{definition}
+% \begin{note}
+%     [找渐近的顺序]
+%     (1)在无定义点，区间端点，分段点找铅直渐近线；
+
+%     (2)求$\lim_{x \to \infty}f(x)$,在正负无穷远处找水平渐近线;
+
+%     (3)求$\lim_{x \to \infty} \dfrac{f(x)}{x}$和$\lim_{x \to \infty} (f(x) - kx)$,在正负无穷远处找斜渐近线.
+% \end{note}
+
+\section{最值}
+\begin{induction}
+    [最值的求法]
+    (1)\textbf{找驻点}：在函数的定义域内找出所有的驻点(即\textbf{导数为0的点}和\textbf{不可导点})；
+
+    (2)\textbf{比较}：将这些点与定义域的端点一起代入函数，比较函数值的大小，找出最大值和最小值.
+\end{induction}
+\begin{note}
+    在寻找数列的最值时，先将数列当成函数求出驻点，在每一个驻点两边取整点比较出最值.
+
+    例如求数列${\sqrt[n]{n}}$的最大项：
+\end{note}
+
+
+\section{曲率和曲率半径(记公式)}
+\begin{definition}
+    [曲率和曲率半径]
+    设曲线$y=f(x)$在点$(x_0, f(x_0))$处可导，且切线与$x$轴的夹角为$\alpha$, 则曲线在该点的\textbf{曲率}定义为
+    \[
+    K = \left|\dfrac{d\alpha}{ds}\right| = \dfrac{|y''|}{(1+y'^2)^{3/2}},
+    \]
+    其中$s$是曲线的弧长参数. 曲线在该点的\textbf{曲率半径}定义为
+    \[
+    R = \dfrac{1}{K} = \dfrac{(1+y'^2)^{3/2}}{|y''|}(y'' \neq 0).
+    \]
+\end{definition}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
