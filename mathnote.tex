@@ -400,6 +400,7 @@
     \item $\arcsin x + \arccos x = \dfrac{\pi}{2}$.
     \item $\arctan x + arccot x = \dfrac{\pi}{2}$.
     \item $x-1 < \lfloor x \rfloor \leq x\ (<\text{结合图像记忆}>)$.
+    \item $\dfrac{1}{1+x} < \ln\left(1+\dfrac{1}{x}\right) < \dfrac{1}{x}$\text{（拉格朗日中值定理证明）}
 \end{itemize}
 $\delta$ $\varDelta$  $\Delta $
 \section{泰勒展开式(x=0处)}
@@ -1054,6 +1055,231 @@ $f(x)$在$x_0$某一领域有定义,邻域内任意一点$x$,均有
     \textbf{相关变化率}：如果$y=f(x)$, $x=g(t)$, 则$y$关于$t$的变化率为$\dfrac{dy}{dt} = \dfrac{dy}{dx} \cdot \dfrac{dx}{dt}$.
 \end{induction}
 还有微分在经济中的应用，如边际成本、边际收益等概念也可以通过导数来理解和计算.数一不考察.
+
+
+
+%===========================================================
+\chapter{一元积分:概念与性质}
+%===========================================================
+\section{不定积分}
+\begin{definition}
+    [原函数与不定积分]
+    若在区间$I$上任意一点都有$F'(x) = f(x)$, 则称$F(x)$是$f(x)$的一个\textbf{原函数}, 记作$F(x) = \int f(x) dx$.
+\end{definition}
+\begin{note}
+    $\bigstar$ 原函数不唯一，$F(x) + C$也是$f(x)$的一个原函数，其中$C$为任意常数.求不定积分时必须要加上常数$C$.
+
+    由$F'(x) = f(x)$可知：\textbf{$F(x)$必须连续}.
+
+    谈到原函数与不定积分，必须要指明$f(x)$的定义域，否则可能会出现不同的原函数，如$f(x)=\dfrac{1}{x}$在$(-\infty,0)$和$(0,+\infty)$上分别有不同的原函数.尽管二者可以使用$\ln|x|$表示，但定义域不同.
+\end{note}
+
+\begin{theorem}
+    [原函数(不定积分)存在定理]
+    (1)连续函数$f(x)$必定存在原函数$F(x)$.
+
+    (2)含有\textbf{第一类间断点}和\textbf{无穷间断点}的函数$f(x)$在包含改间断点的区间内没有原函数.
+
+    例如$f(x)=\dfrac{1}{x}$在$x=0$处有无穷间断点，所以在包含$x=0$的任何区间内都没有原函数.
+\end{theorem}
+\begin{note}
+    证明见P244.
+
+    简单来说就是：不定积分的原函数$F(x)$要求在积分区间上处处可导，
+    尽管含有\textbf{第一类间断点}和\textbf{无穷间断点}的函数$f(x)$的变上限积分存在，
+    但该变上限积分在间断点处不可导，所以不满足原函数的定义.
+\end{note}
+
+
+\section{定积分}
+\begin{definition}
+    [定积分]
+    设函数$f(x)$在$[a,b]$上有定义, 将区间$[a,b]$等分成$n$份, 每份长度为$\Delta x = \dfrac{b-a}{n}$, 在每个小区间$[x_{k-1}, x_k]$上任取一点$\xi_k$, 则\textbf{黎曼和}定义为
+    \[
+        S_n = \sum_{k=1}^n f(\xi_k) \Delta x.
+    \]
+    如果当$n \to +\infty$时, 对于任意的$\xi_k$, 极限$\lim_{n \to +\infty} S_n$存在, 则称函数$f(x)$在$[a,b]$上\textbf{可积}, 并称此极限值为函数$f(x)$在$[a,b]$上的定积分, 记作
+    \[
+        \int_a^b f(x) dx = \lim_{n \to +\infty} S_n.
+    \]
+\end{definition}
+\begin{note}
+    % 分割的方法不唯一，可以等分，也可以不等分；选取的点$\xi_k$也不唯一，可以是区间的左端点、右端点或者任意一点.只要满足对于任意的$\xi_k$，极限存在即可.
+    1.定积分的几何意义是:函数图像与积分坐标轴围成的\textbf{带符号面积}.
+
+    2.将$(a,b)$特殊化为$(0,1)$,可以得到更简单的形式：
+    \[
+        \int_0^1 f(x)dx = \lim_{n \to +\infty} \sum_{k=1}^n f\left(\dfrac{k}{n}\right)\dfrac{1}{n} .
+    \]
+    $\bigstar\bigstar\bigstar$ 该式从右到左经常用来计算极限,
+    这是常见的一类题目，重点是\ 提出“可爱因子”$\dfrac{1}{n}$并凑出积分变量(如$\dfrac{i}{n}$,或其他形式),根据积分变量的范围确定分范围.
+    
+\end{note}
+
+
+% \begin{theorem}
+%     [常义定积分存在定理]
+%     充分条件：
+
+%     (1)如果函数$f(x)$在$[a,b]$上连续, 则$f(x)$在$[a,b]$上可积.
+
+%     (2)如果函数$f(x)$在$[a,b]$上单调, 则$f(x)$在$[a,b]$上可积.
+
+%     (3)如果函数$f(x)$在$[a,b]$上有界, 且仅有有限个间断点, 则$f(x)$在$[a,b]$上可积.
+    
+%     必要条件：如果函数$f(x)$在$[a,b]$上可积, 则$f(x)$在$[a,b]$上有界, 且间断点的集合是一个零测集.
+% \end{theorem}
+
+\begin{induction}
+    [定积分的性质]
+    $\int_{a}^{a}f(x) dx = 0$, $\int_{b}^{a}f(x) dx = -\int_{a}^{b}f(x) dx$.
+    
+    (1)线性性质：$\int_a^b [\alpha f(x) + \beta g(x)] dx = \alpha \int_a^b f(x) dx + \beta \int_a^b g(x) dx$.
+
+    (2)区间可加性：$\int_a^c f(x) dx = \int_a^b f(x) dx + \int_b^c f(x) dx$.
+
+    (3)比较性质：如果$f(x) \le g(x)$对$[a,b]$内的任意$x$成立, 则
+    \[
+        \int_a^b f(x) dx \le \int_a^b g(x) dx.
+    \]
+    (4)\textbf{绝对值不等式}：$\left|\int_a^b f(x) dx\right| \le \int_a^b |f(x)| dx$.
+
+    (5)估值定理：如果$m \le f(x) \le M$对$[a,b]$内的任意$x$成立, 则
+    \[
+        m(b-a) \le \int_a^b f(x) dx \le M(b-a).
+    \]
+    (6)$\bigstar\bigstar\bigstar$\textbf{积分中值定理}：如果函数$f(x)$在$[a,b]$上连续, 则存在$\xi\in[a,b]$使得
+    \[
+        \int_a^b f(x) dx = f(\xi)(b-a). 
+    \]
+    $\xi \in (a,b)$时，结论依旧成立.
+\end{induction}
+
+
+\section{变限积分}
+\begin{induction}
+    [变限积分的性质]
+    $F(x) = \int_{a}^{x} f(t) dt$
+
+    (1)函数$f(x)$在$I$上可积,则$F(x)$在$I$上连续.
+    
+    $\rightarrow$ \textbf{变限积分只要存在就是连续的}.
+
+    (2)$\bigstar \bigstar \bigstar$ $f(x)$连续，则$F(x)$可导，$\dfrac{dF(x)}{x} = f(x)$.
+
+    (3)若$x=x_0 \in I$是$f(x)$唯一的跳跃间断点，$F(x)$在该点不可导,且
+
+    $F_{-}'(x_0) = \lim_{x\to x_0^-}f(x), F_{+}'(x_0) = \lim_{x\to x_0^+}f(x)$.
+    
+    有点类似概率论中混合型随机变量\textbf{概率密度函数}与\textbf{概率分布函数}的关系;
+
+    若$x=x_0 \in I$是$f(x)$唯一的可去间断点，$F(x)$在该点可导，$F'(x) = \lim_{x\to x_0}f(x) \neq f(x_0)$.
+
+
+\end{induction}
+
+
+
+\section{反常积分}
+\begin{definition}
+    积分区间无限或者函数在积分区间内某点(\textbf{瑕点})无界的积分被称为反常积分,与定积分对立.
+
+    将无穷远点与瑕点统称为\textbf{反常积分的奇点}.
+\end{definition}
+
+\begin{induction}
+    [反常积分敛散的判别]
+    在判别之前，先要判断反常积分的奇点是无穷远点还是瑕点,以及奇点的位置，若含有多个奇点，或者瑕点出现在区间中间，
+    则需要分段讨论, 只有每一部分的反常积分都收敛，整个反常积分才收敛.
+
+    (1)比较判别法
+    
+    (2)$\star$比较判别法的极限形式
+\end{induction}
+\begin{corollary}
+    [重要结论\ 证明:P268]
+    (1)$\int_0^1\dfrac{1}{x^p} dx$: 收敛,$0<p<1$; 发散, $p \ge 1$; $p<0$时是普通定积分.
+
+    (2)$\int_0^1 \dfrac{\ln x}{x^p}dx$: 收敛，$0<p<1$;发散，$p\geq 1$.
+
+    (3)$\int_1^{+\infty}\dfrac{1}{x^p} dx$: 收敛, $p>1$; 发散, $p \le 1$.
+
+    (4)$\int_1^{+\infty}\dfrac{\ln x}{x^p}dx$: 收敛, $p>1$; 发散, $p \le 1$.
+\end{corollary}
+\begin{note}
+    判定敛散性的题目很难，需要用好这几个结论，并善用比较判别法(多跟$"x^p"$比较)，多积累常见的收敛、发散的积分.
+
+    $\bigstar$对于奇函数/偶函数$f(x)$的积分$\int_{-\infty}^{+\infty}f(x)dx$,
+    只有当$\int_{0}^{+\infty}f(x)dx$收敛时才能运用奇偶的性质.
+\end{note}
+
+\begin{induction}
+    [常用的比较审敛极限形式]
+    \begin{itemize}
+        \item $\lim_{x\to 0^+}\dfrac{\ln x}{\dfrac{1}{\sqrt{x}}} = 0$
+        \item $\lim_{x\to +\infty}\dfrac{\ln x}{\sqrt{x}} = 0$
+    \end{itemize}
+\end{induction}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
