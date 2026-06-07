@@ -1,13 +1,13 @@
 # Fdb version 4
-["xdvipdfmx"] 1779629718.15114 "build/mathnote.xdv" "build/mathnote.pdf" "build/mathnote" 1779629722.22633 0
-  "build/mathnote.xdv" 1779629717 371132 bf899742f3701b15b75d292dbc5b03f7 "xelatex"
+["xdvipdfmx"] 1780835588.77942 "build/mathnote.xdv" "build/mathnote.pdf" "build/mathnote" 1780835591.03629 0
+  "build/mathnote.xdv" 1780835588 903520 d18bbd07caefc0b6c53a1aa00fab2aad "xelatex"
   (generated)
   "build/mathnote.pdf"
   (rewritten before read)
-["xelatex"] 1779629706.75809 "d:/LaTexFiles/mathnote.tex" "build/mathnote.xdv" "mathnote" 1779629722.20543 0
-  "build/mathnote.aux" 1779629717 3062 6765129e4b5426e674d38c80820a4695 "xelatex"
-  "build/mathnote.toc" 1779629717 1470 2cdac1aa71e582c4606ae3669aa75af8 "xelatex"
-  "d:/LaTexFiles/mathnote.tex" 1779629692 26397 51c675e6633179ed0c58d7c8ca308b60 ""
+["xelatex"] 1780835578.99772 "d:/LaTexFiles/mathnote.tex" "build/mathnote.xdv" "mathnote" 1780835591.02441 0
+  "build/mathnote.aux" 1780835588 5642 2f29c29e50ceb1b26bf35dd1115ef356 "xelatex"
+  "build/mathnote.toc" 1780835588 3115 5f79d2acef60321f8ec30bf6d508b235 "xelatex"
+  "d:/LaTexFiles/mathnote.tex" 1780835566 63102 45745a24589caa899bd977bfc2e0201b ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/map/fontname/texfonts.map" 1779540995 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/adobe/palatino/pplb7t.tfm" 1779543565 1616 371d1ee60c04b008c8fd760060cd34f1 ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/adobe/palatino/pplr7t.tfm" 1779543565 1804 7b5f73028f6509167f47ace9d69509ed ""
@@ -15,6 +15,7 @@
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/amsfonts/symbols/msbm10.tfm" 1779537369 908 2921f8a10601f252058503cc6570e581 ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/cm/cmr10.tfm" 1779538808 1296 45809c5a464d5f32c8f98ba97c1bb47f ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/esint/esint10.tfm" 1779540291 364 55557743e6c24ee44e49bc5e8dbbe3cd ""
+  "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/mathpazo/fplmbb.tfm" 1779542768 564 cb1a5fc3f0326dd000c6e6c0fce59d7c ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/mathpazo/zplmb7m.tfm" 1779542768 2100 38b16244127c37b323d93d4fdd707706 ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/mathpazo/zplmb7t.tfm" 1779542768 1640 c14e51df62d6cb0dd79e4ca3b91ca7c3 ""
   "d:/Program Files/texlive/2026/texmf-dist/fonts/tfm/public/mathpazo/zplmb7y.tfm" 1779542768 1308 ebaf4dfd57218e5550746355e0f69cc4 ""
@@ -221,6 +222,7 @@
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/psnfss/omxzplm.fd" 1779543998 322 fb88cb3e5f25cf1596ba8826c4210e0e ""
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/psnfss/ot1ppl.fd" 1779543998 961 06b773644d960aac68add40fcb596208 ""
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/psnfss/ot1zplm.fd" 1779543998 436 5e7baa1a259bab50a2bdffad6426f38c ""
+  "d:/Program Files/texlive/2026/texmf-dist/tex/latex/psnfss/ufplmbb.fd" 1779543998 321 077609d8fc08b1f1181795378b603500 ""
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex" 1779545340 34681 5f7ded8db74e73427361503c88aa1d95 ""
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex" 1779545340 9105 3c2de34ef77044dd7d6023f6a0cc7008 ""
   "d:/Program Files/texlive/2026/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex" 1779545340 17164 48d2e1305385c749e958604b3c829378 ""
@@ -255,7 +257,7 @@
   "d:/Program Files/texlive/2026/texmf-dist/web2c/texmf.cnf" 1779537024 43630 e9fa012910491fe5ae08a72c3c2997a7 ""
   "d:/Program Files/texlive/2026/texmf-var/web2c/xetex/xelatex.fmt" 1779591639 4485204 0c4110a9dcd6da6a89c99f63a2fb8ff2 ""
   "d:/Program Files/texlive/2026/texmf.cnf" 1779590108 713 e69b156964470283e0530f5060668171 ""
-  "mathnote.tex" 1779629692 26397 51c675e6633179ed0c58d7c8ca308b60 ""
+  "mathnote.tex" 1780835566 63102 45745a24589caa899bd977bfc2e0201b ""
   (generated)
   "build/mathnote.aux"
   "build/mathnote.log"

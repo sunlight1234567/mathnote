@@ -444,7 +444,7 @@ $\delta$ $\varDelta$  $\Delta $
     
 \end{itemize}
 
-\section{不定积分公式}
+\section{不定积分公式（未完善）}
 \begin{itemize}
     \item $\int x^n \,dx = \dfrac{x^{n+1}}{n+1} + C$.
     \item $\int a^x \,dx = \dfrac{a^x}{\ln a} + C$.
@@ -1274,6 +1274,86 @@ $f(x)$在$x_0$某一领域有定义,邻域内任意一点$x$,均有
 
 
 
+
+% ===================================
+\chapter{一元积分的几何计算}
+% ===================================
+使用一元积分解决：平面图形的面积、旋转体的体积、函数的平均值、形心坐标、平面曲线的弧长、
+旋转曲面的面积（侧面积）。
+
+可以在直角坐标、极坐标、参数方程下解决问题。
+\section{平面图形面积}
+直角坐标系略。
+\begin{induction}[极坐标系]
+    图形$r=r(\theta), \theta \in [\alpha, \beta]$两端与原点连线间的面积
+    $$S = \int_{\alpha }^{\beta} \dfrac{1}{2}r^2(\theta)d\theta$$
+    
+    $r=r_1(\theta)$与$r=r_2(\theta)$在$\theta \in [\alpha, \beta]$之间的面积
+    $$S = \int_{\alpha }^{\beta} \dfrac{1}{2}\left|r_1^2(\theta) - r_2^2(\theta)\right|d\theta$$
+\end{induction}
+
+\begin{induction}
+    [参数方程]
+    图形由参数方程$x=x(t), y=y(t), t \in [\alpha, \beta]$给出，则图形的面积为
+    $$S = \int_{\alpha}^{\beta} y(t)dx(t) = \int_{\alpha}^{\beta} y(t)x'(t)dt$$
+\end{induction}
+\begin{note}
+    该公式实际就是对直角坐标下的积分公式进行换元，注意确定好上下限。
+\end{note}
+
+\section{旋转体的体积}
+\begin{induction}[直角坐标系]
+    (1) 曲边梯形$y=f(x), x \in [a, b]$绕$x$轴旋转一周形成的旋转体的体积为
+    $$V = \int_a^b \pi y^2 dx = \int_a^b \pi f^2(x) dx$$
+
+    (2) 曲边梯形$y=f(x), x \in [a, b](0\leq a)$绕$y$轴旋转一周形成的旋转体的体积为
+    $$V = \int_a^b (2\pi x) |y| dx$$
+
+    (3) 图形$y=f(x), x \in [a, b]$绕一般直线$L_0:Ax+By+C=0$旋转一周形成的旋转体的体积为
+    $$V = \dfrac{\pi}{(A^2+B^2)^{3/2}} \int_a^b [Ax+By+C]^2|Af'(x)-B| dx$$
+\end{induction}
+\begin{note}
+    还有可能考察绕平行于$x,y$的直线旋转，绕一般直线的题目几乎没见过。
+\end{note}
+
+
+\section{函数的平均值}
+\begin{induction}   
+    函数$f(x)$在区间$[a, b]$上的平均值为
+    $$f_{ave} = \dfrac{1}{b-a}\int_a^b f(x) dx$$
+\end{induction}
+
+
+\section{平面曲线的弧长}
+$\bigstar\bigstar\bigstar$ \textbf{弧长微分:}$$ds = \sqrt{(dx)^2 + (dy)^2}$$
+下面各个弧长公式均由此推出。
+\begin{induction}[直角坐标系]
+    曲线$y=f(x), x \in [a, b]$的弧长为
+    $$L = \int_a^b \sqrt{1+[f'(x)]^2} dx$$
+\end{induction}
+
+\begin{induction}[参数方程]
+    曲线由参数方程$x=x(t), y=y(t), t \in [\alpha, \beta]$给出，则曲线的弧长为
+    $$L = \int_{\alpha}^{\beta} \sqrt{[x'(t)]^2 + [y'(t)]^2} dt$$
+\end{induction}
+\begin{note}[空间曲线]
+    曲线由参数方程$x=x(t), y=y(t), z=z(t), t \in [\alpha, \beta]$给出，则曲线的弧长为
+    $$L = \int_{\alpha}^{\beta} \sqrt{[x'(t)]^2 + [y'(t)]^2 + [z'(t)]^2} dt$$
+\end{note}
+
+\begin{induction}[极坐标系]
+    曲线$r=r(\theta), \theta \in [\alpha, \beta]$的弧长为
+    $$L = \int_{\alpha}^{\beta} \sqrt{r^2(\theta) + [r'(\theta)]^2} d\theta$$
+\end{induction}
+
+
+\section{旋转曲面的面积（侧面积）}
+\begin{induction}
+    求该曲面侧面积的关键是：\textbf{使用弧长微分去算微分的薄“柱体”的侧面积。}
+    
+    在直角坐标系下曲线$y=f(x), x \in [a, b]$绕$x$轴旋转一周形成的旋转曲面的侧面积为
+    $$S = \int_a^b 2\pi |y| ds = \int_a^b 2\pi |f(x)| \sqrt{1+[f'(x)]^2} dx$$
+\end{induction}
 
 
 
