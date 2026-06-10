@@ -52,12 +52,9 @@ _minted-*/
 *.pyg
 *.listing
 
-# Editor and workspace files
-*.code-workspace
-.vscode/
-.idea/
+# vscode workspace
+.code-workspace
 
 # Common output directories
-/out/
-**/out/
-**/build/
+build/
+!build/mathnote.pdf
