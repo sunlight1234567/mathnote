@@ -391,101 +391,175 @@
 
 
 % ===================================
-\chapter{积分等式与积分不等式}
+\chapter{一元积分的物理应用}
 % ===================================
-这一部分主要是使用前面学到的定理来解决有关积分的等式、不等式问题。
+解决物理问题的一般顺序：分析物理问题，写出物理量的公式，建立合适的坐标系并对物理量进行微分，然后积分计算总的物理量。
 
-难度较大，做题的时候注意心态不要崩。
+经典的物理模型包括：变力做攻、抽水问题、静水压力等。
 
+% ===================================
+\chapter{多元函数微分学}
+% ===================================
+\section{基本概念}
+邻域、极限、连续、偏导数、可微
 
-\begin{induction}
-    [由中值定理推导的积分等式]
-    设$f(x),g(x)$在$[a,b]$上连续，且$g(x)$不变号，则存在$\xi\in[a,b]$使得
-    \[
-        \int_a^b f(x)g(x)\mathrm{d}x = f(\xi)\int_a^b g(x)\mathrm{d}x.
-    \]
-\end{induction}
-\begin{proof}
-    设$g(x)\geqslant 0$，则存在$\xi_1,\xi_2\in[a,b]$使得
-    \[
-        f(\xi_1) = \min_{x\in[a,b]}f(x),\quad f(\xi_2) = \max_{x\in[a,b]}f(x).
-    \]
-    则
-    \[
-        f(\xi_1)\int_a^b g(x)\mathrm{d}x \leqslant \int_a^b f(x)g(x)\mathrm{d}x \leqslant f(\xi_2)\int_a^b g(x)\mathrm{d}x.
-    \]
-    由介值定理，存在$\xi\in[a,b]$使得
-    \[
-        \int_a^b f(x)g(x)\mathrm{d}x = f(\xi)\int_a^b g(x)\mathrm{d}x.
-    \]
-    当$g(x)\leqslant 0$时同理。
-\end{proof}
-
-\begin{induction}
-    [使用夹逼准则求积分的极限]
-    设$f(x),g(x),h(x)$在$[a,b]$上连续，
-    且满足$f(x)\leqslant g(x)\leqslant h(x)$。
-
-    若$\int_a^b f(x)\mathrm{d}x = \int_a^b h(x)\mathrm{d}x$，
-    则$\lim\int_a^b g(x)\mathrm{d}x = \lim \int_a^b f(x)\mathrm{d}x$。
-\end{induction}
-
-\begin{induction}
-    [$\bigstar$积分不等式的证明方法]
-    (1)利用积分函数的单调性;
-    
-    (2)常量变量化：将某一个积分限变量化，构造变限积分函数，利用单调性证明该函数的单调性;
-    
-    (3)利用积分中值定理。    
-    
-    (4)利用泰勒公式将被积函数展开。
-\end{induction}
-
-\begin{example}
-    [常量变量化方法]
-    设$f(x)$在$[a,b]$上连续且$f(x)$严格单调增加，证明：
-    $$(a+b)\int_{a}^{b}f(x)\mathrm{d}x < 2\int_{a}^{b}xf(x)\mathrm{d}x\mathstrut$$
-
-    提示：将b变量化构造辅助函数$F(x)=(a+x)\int_{a}^{b}f(t)\mathrm{d}t - 2\int_{a}^{x}tf(t)\mathrm{d}t$
-\end{example}
-
-\begin{example}
-    [积分中值定理方法]
-    设$f'(x)$在$[a,b]$上连续$f(0)=0$，证明：
-    $$|\int_{a}^{b}f(x)dx| \leq \dfrac{Ma^2}{2}$$
-    其中$M=\max_{x\in[a,b]}|f'(x)|$。
-\end{example}
-
-\begin{example}
-    [泰勒公式方法]
-    设$f(x)$在$[0,1]$上二阶可导，且$f(\dfrac{1}{2})=1,f^{''}(x) > 0$，证明：
-    $\int_{0}^{1}f(x)\mathrm{d}x\geq 1$
-\end{example}
+\begin{definition}
+    [多元函数的极限]
+    设函数 $f(x,y)$ 在点 $(x_0,y_0)$ 的某个邻域内有定义，如果对于任意 $\varepsilon > 0$，存在 $\delta > 0$，使得当 $0 < \sqrt{(x-x_0)^2 + (y-y_0)^2} < \delta$ 时，都有 $$|f(x,y) - A| < \varepsilon$$，则称 $A$ 是函数 $f(x,y)$ 当 $(x,y) \to (x_0,y_0)$ 时的极限，记作 $$\lim_{(x,y) \to (x_0,y_0)} f(x,y) = A$$。
+\end{definition}
 \begin{note}
-    在$x_0=\dfrac{1}{2}$处泰勒展开，带佩亚诺余项，奇次项的积分为0.
+    一元与多元函数极限的比较:
+    
+    (1)一元极限只有左右两种逼近方式、而多元极限有无穷种逼近方式，因此多元极限的存在不能通过定义来证明，必须要使用\textbf{夹逼定理}、\textbf{极限的性质}等工具来证明;
+    
+    (2)$\bigstar$二者都具\textbf{唯一性、局部有界性、局部保号性};
+\end{note}
+
+\begin{definition}
+    [多元函数的连续]
+    设函数 $f(x,y)$ 在点 $(x_0,y_0)$ 的某个邻域内有定义，如果 $$\lim_{(x,y) \to (x_0,y_0)} f(x,y) = f(x_0,y_0)$$则称函数 $f(x,y)$ 在点 $(x_0,y_0)$ 处连续。
+\end{definition}
+\begin{note}考纲对多元函数间断点类型不做要求。\end{note}
+
+\begin{definition}
+    [偏导数]
+    (1)偏导数定义：设函数 $f(x,y)$ 在点 $(x_0,y_0)$ 的某个邻域内有定义，如果 $$\lim_{\Delta x  \to 0} \frac{f(x_0+\Delta x,y_0) - f(x_0,y_0)}{\Delta x}$$存在，则称该极限为函数 $f(x,y)$ 在点 $(x_0,y_0)$ 处的偏导数，记作 
+    $$\frac{\partial f}{\partial x}|_{(x_0,y_0)} = \frac{\partial [f(x_0,y_0)]}{\partial x} = f_x(x_0,y_0) = f_x^{'}(x_0,y_0).$$
+    
+    (2)偏导数的几何意义：函数 $f(x,y)$ 在点 $(x_0,y_0)$ 处的偏导数 $\frac{\partial f}{\partial x}|_{(x_0,y_0)}$ 表示当 $y$ 固定在 $y_0$ 时，函数 $f(x,y)$ 沿着 $x$ 轴方向的变化率，即切线斜率。
+    
+    (3)高阶偏导数：如果函数 $f(x,y)$ 在点 $(x_0,y_0)$ 处的偏导数 $\frac{\partial f}{\partial x}|_{(x_0,y_0)}$ 和 $\frac{\partial f}{\partial y}|_{(x_0,y_0)}$ 都存在，并且在点 $(x_0,y_0)$ 的某个邻域内有定义，那么我们可以继续求它们的偏导数，得到二阶偏导数，如 $\frac{\partial^2 f}{\partial x^2}$、$\frac{\partial^2 f}{\partial y^2}$、$\frac{\partial^2 f}{\partial x \partial y}$ 等。
+
+    其中，二阶混合偏导在$\frac{\partial^2 f}{\partial x \partial y}$\textbf{连续}的条件下与求导顺序无关。
+
+    (4)"偏积分"：$f(x,y) = \int f_x(x,y) dx + g(y)$(要加上积分无关变量的函数).
+\end{definition}
+\begin{note}
+    偏导数特指x、y方向的偏导数，而沿某一直线方向的导数为\textbf{方向导数}，知识点在第17讲中。
+    $\bigstar\bigstar\bigstar$在对$x$求$(x_0,y_0)$偏导数时，可以：
+
+    (1)$\bigstar$先代后求：先将y=$y_0$带入,得到一个关于x的单变量函数$f(x,y_0)$，再对该函数求导数$f_x(x,y_0)$后带入$x=x_0$;
+
+    (2)先求后代：直接将$y$视为常数，按照单变量求导的规则求偏导数$f_x(x,y)$，再将$x=x_0$，$y=y_0$带入。
+\end{note}
+
+\begin{definition}
+    [全增量、全微分]
+    设函数 $f(x,y)$ 在点 $(x,y)$ 的某实心邻域内有定义，若$z=f(x,y)$在该点处的
+    $$\textbf{全增量:}\Delta z = f(x_0+\Delta x,y_0+\Delta y) - f(x_0,y_0)$$
+    可表示为$$\Delta z = A\Delta x + B\Delta y + o(\sqrt{(\Delta x)^2 + (\Delta y)^2})$$
+    则称$z=f(x,y)$在$(x,y)$处可微,并记$$\textbf{全微分:}dz = Adx + Bdy.$$
+\end{definition}
+\begin{induction}
+    [可微的条件]
+    (1)必要条件：可微$\Rightarrow$偏导数存在
+    $$dz = \frac{\partial z}{\partial x}dx + \frac{\partial z}{\partial y}dy$$
+    
+    (2)充分条件：偏导数存在且连续$\Rightarrow$可微
+\end{induction}
+\begin{note}
+    由可微的定义以及可微的必要条件得到进行判定可微的步骤：
+    
+    (1)计算函数在该点的偏导数$\frac{\partial z}{\partial x}$、$\frac{\partial z}{\partial y}$（一般使用定义求）以及
+    
+    全增量$\Delta z = f(x_0+\Delta x,y_0+\Delta y) - f(x_0,y_0)$;
+
+    (2)计算极限$\lim_{(\Delta x,\Delta y) \to (0,0)} \frac{\Delta z - \frac{\partial z}{\partial x}\Delta x - \frac{\partial z}{\partial y}\Delta y}{\sqrt{(\Delta x)^2 + (\Delta y)^2}}$;
+
+    (3)如果极限为0，则函数在该点可微，并且
+    
+    将全增量$\Delta z$表示为$\Delta z = \frac{\partial z}{\partial x}\Delta x + \frac{\partial z}{\partial y}\Delta y + o(\sqrt{(\Delta x)^2 + (\Delta y)^2})$的形式。
+\end{note}
+
+
+\section{多元微分法则}
+链式求导、全微分形式不变性、隐函数存在定理、二元函数的拉格朗日定理
+\begin{theorem}
+    [链式求导]
+    设 $z = f(u,v), u=\varphi (x,y), v=\psi (x,y)$则 $z = f(\varphi (x,y), \psi (x,y))$并且偏导数
+    $$\frac{\partial z}{\partial x} = \frac{\partial z}{\partial u} \frac{\partial u}{\partial x} + \frac{\partial z}{\partial v} \frac{\partial v}{\partial x},
+    \quad \frac{\partial z}{\partial y} = \frac{\partial z}{\partial u} \frac{\partial u}{\partial y} + \frac{\partial z}{\partial v} \frac{\partial v}{\partial y}.$$
+\end{theorem}
+\begin{note}
+    (1)若$u,v$是关于$x$的一元函数,则$\frac{dz}{dx} = \frac{dz}{du} \frac{du}{dx} + \frac{dz}{dv} \frac{dv}{dx}$为全导数;
+    
+    (2)$\bigstar$关于"变量对变量的求(偏)导"，"函数对位置求(偏)导"的区分:
+
+    在例子$z = f(x, u(x,y))$中，$z$对$x$的偏导数$$\frac{\partial z}{\partial x} = f_{1}'(x,u(x,y)) + \frac{\partial z}{\partial u} \frac{\partial u}{\partial x}$$
+    其中$$f_{1}'(x,u(x,y)) = f_{1}'(x,y)|_{x=x, y=u(x,y)}$$是$f(x,y)$对第一个变量求偏导得到$f_1'(x,y)$后带入$x=x,y=u(x,y)$得到的;
+
+    或者将$f(x,u(x,y))$的第一个参数$x$看成中间变量$v(x)=x$,此时$z$对$x$的偏导数$$\frac{\partial z}{\partial x} = \frac{\partial z}{\partial v} \frac{\partial v}{\partial x} + \frac{\partial z}{\partial u} \frac{\partial u}{\partial x}.$$
+
+    函数$f$对其第一位置参数的偏导的写法$f_1(\cdot,\cdot)$或$f_1'(\cdot,\cdot)$最准确,也常用$f_x(\cdot,\cdot)$,而$\frac{\partial f}{\partial x}$可能会造成歧义。
+\end{note}
+
+\begin{theorem}
+    [全微分形式不变性]
+    设 $z = f(u(x,y),v(x,y))$ 在点 $(x,y)$处可微, $z,u,v$ 的全微分 $dz,du,dv$ 可以表示为
+    $$dz = \frac{\partial z}{\partial u} du + \frac{\partial z}{\partial v} dv,\quad
+    du = \frac{\partial u}{\partial x} dx + \frac{\partial u}{\partial y} dy,\quad
+    dv = \frac{\partial v}{\partial x} dx + \frac{\partial v}{\partial y} dy$$
+    $$du,dv\rightarrow dz= \frac{\partial z}{\partial x} dx + \frac{\partial z}{\partial y} dy.$$
+\end{theorem}
+
+\begin{theorem}
+    [隐函数存在定理(求导公式)]
+    (1)$F(x,y)=0$确定隐函数$y=f(x)$,当$F_y'(x,y)\neq 0$时，$y=f(x)$存在，有$$\frac{dy}{dx} = -\frac{F_x'}{F_y'};$$
+    (2)$F(x,y,z)=0$确定隐函数$z=f(x,y)$,当$F_z'(x,y,z)\neq 0$时，$z=f(x,y)$存在，有$$\frac{\partial z}{\partial x} = -\frac{F_x'}{F_z'}, \quad \frac{\partial z}{\partial y} = -\frac{F_y'}{F_z'}.$$
+\end{theorem}
+\begin{note}
+    $F_y'(x,y)\neq 0$,$F_z'(x,y,z)\neq 0$是隐函数存在的\textbf{必要条件},但不是充分条件。
 \end{note}
 
 
 
+\section{多元函数的极值、最值}
+\begin{definition}
+    [多元函数的极值、最值]
+    多元函数的极值、最值与一元函数类似，将一维邻域换成多维邻域即可。
+\end{definition}
+
+\begin{corollary}
+    [多元函数极值的必要条件]
+    $z=f(x,y)$在$(x_0,y_0)$处取得极值的必要条件是 $\frac{\partial f}{\partial x}|_{(x_0,y_0)} = 0$ 且 $\frac{\partial f}{\partial y}|_{(x_0,y_0)} = 0$。
+    $z=f(x,y)$在$(x_0,y_0) \rightarrow \frac{\partial f}{\partial x}|_{(x_0,y_0)} = 0$ 且 $\frac{\partial f}{\partial y}|_{(x_0,y_0)} = 0$。
+    事实上，二元函数取得极值的充要条件是：每一个方向上的曲线都在该点取得极值。
+\end{corollary}
+
+\begin{induction}
+    [求无条件极值]
+    (1)找出可疑点：偏导数为0和偏导数不存在的点；
+    
+    (2)利用二元函数取极值的充分条件判定是否为极值点：
+
+    设$A = f_{xx}^{''}(x_0,y_0)$, $B = f_{xy}^{''}(x_0,y_0)$, $C = f_{yy}^{''}(x_0,y_0)$
+
+    (i)$AC - B^2 > 0$且$A > 0$，则$(x_0,y_0)$是$f(x,y)$的极小值点;
+
+    (ii)$AC - B^2 > 0$且$A < 0$，则$(x_0,y_0)$是$f(x,y)$的极大值点;
+
+    (iii)$AC - B^2 < 0$，则$(x_0,y_0)$不是$f(x,y)$的极值点;
+
+    (iv)$AC - B^2 = 0$，则无法判定。
+\end{induction}
+\begin{note}
+    情况(iii)为鞍点,即在某些方向上是极大值点，在另一些方向上是极小值点
+\end{note}
 
 
+\begin{theorem}
+    [条件最值和拉格朗日乘数法]
+\end{theorem}
 
 
+\begin{induction}
+    [有界闭区间上连续函数的最值]
+    由连续知该极限必定存在；
 
+    使用无条件极值极值的求法求得所有在区间内的可疑点，再使用拉格朗日乘数法求得边界上的可疑点；
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    将所有可疑点代入函数中，比较大小，得到最值。
+\end{induction}
 
 
 
