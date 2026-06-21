@@ -1588,6 +1588,8 @@ $\bigstar\bigstar\bigstar$ \textbf{弧长微分:}$$ds = \sqrt{(dx)^2 + (dy)^2}$$
 \end{induction}
 \begin{note}
     情况(iii)为鞍点,即在某些方向上是极大值点，在另一些方向上是极小值点
+
+    情况(iv)判别法失效时，对于哪些较难看出极值性质的函数一般通过将原函数取为特殊的一元函数，证明该一元函数在这一点不是极值，或者取两个一元函数使其在这一点的极值情况不同，一个为极大值、一个为极小值，这样就能判定该点不是原函数的极值点。
 \end{note}
 
 
@@ -1605,6 +1607,83 @@ $\bigstar\bigstar\bigstar$ \textbf{弧长微分:}$$ds = \sqrt{(dx)^2 + (dy)^2}$$
 
     将所有可疑点代入函数中，比较大小，得到最值。
 \end{induction}
+
+
+% ===================================
+\chapter{二重积分}
+% ===================================
+
+\section{概念、性质、对称性}
+二重积分、三重积分的概念与一元积分类似，都是微分和的极限形式，区别在于积分元素的维度不同.
+
+性质也与一元积分类似，需要特别注意：\textbf{保号性、估值定理}、$\bigstar$\textbf{中值定理}.
+\begin{induction}
+    [对称性]
+    分为轴对称、点对称，需要同时满足积分区域对称和积分函数对称.
+    
+    积分函数的对称性：
+
+    关于$x$轴对称：$f(x,y) = \pm f(x,-y);$
+    
+    关于$y$轴对称：$f(x,y) = \pm f(-x,y);$
+
+    关于原点对称：$f(x,y) = \pm f(-x,-y);$
+\end{induction}
+\begin{induction}
+    [轮换对称性]
+    轮换对称性的核心性质是:\textbf{积分的值与字母无关}，即：
+    $$\iint_{D(x,y)} f(x,y) \, dx \, dy = \iint_{D(y,x)} f(y,x) \, dy \, dx$$
+    如果$D(x,y)$关于$y=x$对称，则有$D(x,y)=D(y,x)$,原积分等于：
+    $$\dfrac{1}{2}[\iint_{D(x,y)} f(x,y) \, dx \, dy = \iint_{D(y,x)} f(y,x) \, dy \, dx]$$
+    $$=\dfrac{1}{2}\iint_{D(x,y)} f(x,y) + f(y,x) \, dx \, dy$$
+\end{induction}
+
+\section{在直角坐标、极坐标下的计算}
+\begin{induction}
+    [写多重积分的一般方法]
+    (1)确定积分区域，画出区域图形；
+    
+    (2)选择合适的坐标系和积分元素；
+    
+    (3)确定上下限，计算累次积分；
+\end{induction}
+\begin{note}
+    积分元素$d\sigma = dx\, dy = r\, dr\, d\theta$
+    
+    在三重积分中也有对应的三维积分元素。
+\end{note}
+
+\begin{induction}
+    [选用极坐标的标志]
+    (1)积分函数含$x^2+y^2,\quad \dfrac{x}{y},\quad \dfrac{y}{x};$
+    
+    (2)积分区域为圆或者圆的一部分。
+\end{induction}
+
+\begin{corollary}
+    [高斯积分]
+    $\int_{-\infty}^{+\infty}e^{-x^2} dx = \sqrt{\pi}$
+\end{corollary}
+\begin{proof}记积分为$I$，则
+    \begin{align*}
+        I^2 &= \int_{-\infty}^{+\infty}e^{-x^2} dx\cdot \int_{-\infty}^{+\infty}e^{-y^2} dy \\
+        &= \int_{-\infty}^{+\infty}\int_{-\infty}^{+\infty} e^{-(x^2+y^2)} dx\, dy \\
+        &= \int_0^{2\pi}\int_0^{+\infty} e^{-r^2} r\, dr\, d\theta \\
+        &= 2\pi \cdot \frac{1}{2} = \pi
+    \end{align*}
+\end{proof}
+
+\begin{corollary}
+    [二重积分的换元法]
+    设$x=x(u,v), y=y(u,v)$是定义在区域$D$上的二阶连续可微函数，且雅可比行列式$J=\dfrac{\partial(x,y)}{\partial(u,v)}\neq 0$，则
+    $$\iint_{D_{xy}} f(x,y) dx\, dy = \iint_{D_{uv}} f[x(u,v), y(u,v)] |J| du\, dv$$
+\end{corollary}
+\begin{note}
+    三换：换积分区域、换被积函数、换积分元素。
+\end{note}
+
+
+
 
 
 
