@@ -1684,6 +1684,173 @@ $\bigstar\bigstar\bigstar$ \textbf{弧长微分:}$$ds = \sqrt{(dx)^2 + (dy)^2}$$
 
 
 
+% ===================================
+\chapter{微分方程}
+% ===================================
+
+一些微分方程中的概念：阶数、常微分方程与偏微分方程、线性微分方程、解、通解、初始条件与特解。
+\begin{note}
+    解微分方程的目的是\textbf{解出函数$y=y(x)$},若使用还原法必须还原出$y=y(x)$;
+\end{note}
+\section{一阶微分方程的求解}
+\begin{induction}
+    [可直接分离变量]
+    形如$$\dfrac{dy}{dx}=f(x)g(y)$$的微分方程可直接分离变量，得到$$\dfrac{dy}{g(y)}=f(x)dx$$.
+\end{induction}
+\begin{induction}
+    [换元后可分离]    
+    (1)$\dfrac{dy}{dx}=f(ax+by+c)$,令$u=ax+by+c$,得到$\dfrac{du}{dx}=a+bf(u)$可分离变量;
+    
+    (2)齐次型：$\dfrac{dy}{dx}=\dfrac{f(x,y)}{g(x,y)}$,其中$f(x,y),g(x,y)$是同次的齐次函数，
+    
+    可化为$\dfrac{dy}{dx}=\varphi(\dfrac{y}{x})$,
+    令$u=\dfrac{y}{x}$,可分离为$\dfrac{du}{\varphi(u)-u}=\dfrac{dx}{x}$;
+\end{induction}
+\begin{induction}
+    [一阶线性微分方程]
+    形如：$$\dfrac{dy}{dx}+p(x)y=q(x)$$的微分方程称为一阶线性微分方程，其通解公式为：
+    $$y=e^{-\int p(x)dx}\left(\int q(x)e^{\int p(x)dx}dx+C\right)$$
+\end{induction}
+\begin{note}
+    这里的$\int p(x)dx，\int q(x)dx$为不带常数的积分，其常数均可合并为通解中的常数$C$.
+\end{note}
+\begin{induction}
+    [伯努利方程]
+    形如：$$\dfrac{dy}{dx}+p(x)y=q(x)y^n(n\neq 0,1)$$的微分方程称为伯努利方程,解法为：
+
+    (1)两边同时除以$y^n$，得到$$y^{-n}\cdot\dfrac{dy}{dx}+p(x)y^{1-n}=q(x)$$
+
+    (2)令$z=y^{1-n}$,则$\dfrac{dz}{dx}=(1-n)y^{-n}\ \dfrac{dy}{dx}$,代入上式，得到一阶线性微分方程：
+    $$\dfrac{dz}{dx}+(1-n)p(x)z=(1-n)q(x)$$
+\end{induction}
+\begin{induction}
+    [二阶可降阶微分方程(用换元法化为一阶方程)]
+    (1)$y''=f(x,y')$(不含$y$)
+    
+    令$y'=p,\quad y''=\dfrac{dp}{dx}=p'$,代入上式，得到一阶微分方程：
+    $$p'=f(x,p)$$
+
+    (2)$y''=f(y,y')$(不含$x$)
+    
+    令$y'=p,\quad y''=\dfrac{dp}{dy}=\dfrac{dp}{dy}\cdot \dfrac{dy}{dx}=\dfrac{dp}{dy}\cdot p$,代入上式，得到一阶微分方程：
+    $$\dfrac{dp}{dy}\cdot p=f(y,p)$$   
+
+    (3)$y''=f(y')$(不含$x,y$)
+
+    可按(1)或(2)的方法进行处理;
+\end{induction}
+
+\begin{note}
+    换元过后的方程必须要是常微分方程，因此(1)中使用$\dfrac{dp}{dx}$,(2)中使用$\dfrac{dp}{dy}$,而不能使用$\dfrac{dp}{dx}$.
+\end{note}
+
+\begin{definition}
+    [全微分方程(恰当方程)]
+    对于形如：$$M(x,y)dx+N(x,y)dy=0$$的微分方程，若存在函数$u(x,y)$使得：
+    $$\dfrac{\partial u}{\partial x}=M(x,y),\quad \dfrac{\partial u}{\partial y}=N(x,y)$$
+    则该微分方程为全微分方程，其通解为$u(x,y)=C$.
+\end{definition}
+\begin{note}
+    全微分方程的充分必要条件为：
+    $$\dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}$$
+    可视为两个混合二阶偏导相等。
+
+    解法：先检查充要条件判断是否为全微分方程，若是则通过两个偏导数$M,N$求出$u(x,y)$，若不是则尝试使用积分因子法。
+
+    积分因子法（不在考纲范围内）:
+
+    (1)若$\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}$是$x$的函数，则积分因子为：
+    $$\mu(x)=e^{\int \dfrac{\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}}{N}dx}$$
+
+    (2)若$\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}$是$y$的函数，则积分因子为：
+    $$\mu(y)=e^{\int \dfrac{\dfrac{\partial N}{\partial x}-\dfrac{\partial M}{\partial y}}{M}dy}$$
+\end{note}
+
+\begin{induction}
+    [二阶常系数\textbf{齐次}微分方程]
+    (1)形式：$y''+py'+qy=0$($p,q$为常数)
+
+    (2)解的结构：$y_1(x), y_2(x)$为方程的\textbf{线性无关特解}，则$y=C_1y_1(x)+C_2y_2(x)$为方程的通解（类似线代中的线性无关解构成解空间）；
+
+    (3)$\bigstar$通解：
+    
+    i:特征方程：$r^2+pr+q=0$，设其根为$r_1,r_2$，则通解为：
+    $$y=C_1e^{r_1x}+C_2e^{r_2x}$$
+    ii:若$r_1=r_2=r$，则通解为：
+    $$y=(C_1+C_2x)e^{rx}$$
+    iii:若$r_1=\alpha+\beta i,r_2=\alpha-\beta i$，则通解为：
+    $$y=e^{\alpha x}(C_1\cos \beta x+C_2\sin \beta x)$$
+\end{induction}
+\begin{note}
+    猜测$y=e^{rx}$，代入方程得到特征方程$r^2+pr+q=0$，解出$r_1,r_2$，通过常数变易法（ii）、欧拉公式（iii）得到通解；
+    
+    (i)(ii)(iii)的通解均为线性无关的特解构成的线性组合。
+\end{note}
+
+\begin{induction}
+    [二阶常系数\textbf{非齐次}微分方程]
+    (1)形式：$y''+py'+qy=f(x)$($p,q$为常数)
+
+    (2)解的结构：
+    
+    $y_1(x)$是$y''+py'+qy=f_1(x)$的解，$y_2(x)$是$y''+py'+qy=f_2(x)$的解，则$y=Ay_1(x)+By_2(x)$为方程$y''+py'+qy=Af_1(x)+Bf_2(x)$的解；
+
+    $y_1^*,y_2^*$是$y''+py'+qy=f(x)$的特解,则$y=y_1^*-y_2^*$为方程$y''+py'+qy=0$的特解；
+
+    (3)$\bigstar$通解：对应齐次方程的通解+非齐次方程的特解；
+
+    (4)$\bigstar$特解：
+    
+    记$P(x)、Q(x)、R(x)$为$x$的多项式，$P_n(x)$表示n次多项式。
+
+    i:$f(x) = P_n(x)e^{\alpha x}$,特解$y* = r^{\alpha x}Q_n(x)x^k$，
+    
+    \textcolor{lightgray}{$\quad$k为$\alpha$在特征方程中的重数(0,1,2)，$Q_n(x)$为待定系数的n次多项式;}
+
+
+    ii:$f(x) = e^{\alpha x}[P_m(x)\cos \beta x + P_n(x)\sin \beta x]$,
+    
+    特解$y* = e^{\alpha x}[Q_l(x)\cos \beta x+R_l(x)\sin \beta x]x^k$，
+
+    \textcolor{lightgray}{$\quad$k为$\alpha \pm \beta i$在特征方程中的重数(0,1)，$Q_l(x),R_l(x)$为待定系数的$l$次多项式，$l=max(m,n)$;}
+\end{induction}
+
+\begin{induction}
+    [n(n>2)阶常系数齐次微分方程]
+    (1)形式：$y^{(n)}+p_1y^{(n-1)}+\cdots+p_{n-1}y'+p_ny=0$($p_i$为常数)
+
+    (2)解的结构：解出特征方程的根，每一个根（包括重根）对应一个线性无关的特解，对应如下：
+
+    i:若$r_i$为单根，则对应特解$y_i=e^{r_ix}$；
+
+    ii:若$r_i$为m重根，则对应特解$y_i=e^{r_ix},xe^{r_ix},\cdots,x^{m-1}e^{r_ix}$；
+
+    iii:若$r_i=\alpha \pm \beta i$为单复根，则对应特解$y_i=e^{\alpha x}\cos \beta x,e^{\alpha x}\sin \beta x$；
+
+    iv:若$r_i=\alpha \pm \beta i$为m重复根，则对应特解
+    
+    $y_i=x^{k}e^{\alpha x}\cos \beta x,x^{k}e^{\alpha x}\sin \beta x, k =0,1,\ldots,m-1$；
+
+    (3)$\bigstar$通解：所有线性无关特解的线性组合；
+\end{induction}
+\begin{note}
+    对应的非齐次方程的解依然为齐次方程的通解+非齐次方程的特解，但未见考察。
+\end{note}
+
+\begin{induction}
+    [欧拉方程]
+    (1)形式：$x^ny^{(n)}+p_1x^{n-1}y^{(n-1)}+\cdots+p_{n-1}xy'+p_ny=f(x)$($p_i$为常数)
+
+    一般考察二阶形式：$x^2y''+p_1xy'+p_ny=f(x)$($p_i$为常数)
+
+    (2)解法：
+    $x>0$,令$x=e^t$,计算$y'',y'$并代入欧拉方程，得到一个常系数齐次微分方程；
+    
+    $x<0$,令$x=-e^t$;
+\end{induction}
+
+几何应用、物理应用的关键就是根据几何物理关系列出微分方程，列的方程尽量是关于要求的两个变量的，避免中间变量的参与.
+
 
 
 
