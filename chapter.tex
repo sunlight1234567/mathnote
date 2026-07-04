@@ -391,171 +391,279 @@
 
 
 % ===================================
-\chapter{微分方程}
+\chapter{无穷级数}
 % ===================================
 
-一些微分方程中的概念：阶数、常微分方程与偏微分方程、线性微分方程、解、通解、初始条件与特解。
-\begin{note}
-    解微分方程的目的是\textbf{解出函数$y=y(x)$},若使用还原法必须还原出$y=y(x)$;
-\end{note}
-\section{一阶微分方程的求解}
-\begin{induction}
-    [可直接分离变量]
-    形如$$\dfrac{dy}{dx}=f(x)g(y)$$的微分方程可直接分离变量，得到$$\dfrac{dy}{g(y)}=f(x)dx$$.
-\end{induction}
-\begin{induction}
-    [换元后可分离]    
-    (1)$\dfrac{dy}{dx}=f(ax+by+c)$,令$u=ax+by+c$,得到$\dfrac{du}{dx}=a+bf(u)$可分离变量;
-    
-    (2)齐次型：$\dfrac{dy}{dx}=\dfrac{f(x,y)}{g(x,y)}$,其中$f(x,y),g(x,y)$是同次的齐次函数，
-    
-    可化为$\dfrac{dy}{dx}=\varphi(\dfrac{y}{x})$,
-    令$u=\dfrac{y}{x}$,可分离为$\dfrac{du}{\varphi(u)-u}=\dfrac{dx}{x}$;
-\end{induction}
-\begin{induction}
-    [一阶线性微分方程]
-    形如：$$\dfrac{dy}{dx}+p(x)y=q(x)$$的微分方程称为一阶线性微分方程，其通解公式为：
-    $$y=e^{-\int p(x)dx}\left(\int q(x)e^{\int p(x)dx}dx+C\right)$$
-\end{induction}
-\begin{note}
-    这里的$\int p(x)dx，\int q(x)dx$为不带常数的积分，其常数均可合并为通解中的常数$C$.
-\end{note}
-\begin{induction}
-    [伯努利方程]
-    形如：$$\dfrac{dy}{dx}+p(x)y=q(x)y^n(n\neq 0,1)$$的微分方程称为伯努利方程,解法为：
+本章分为：常数项级数、审敛方法、幂级数和收敛域、幂级数求和、函数展开为幂级数、傅里叶级数.
 
-    (1)两边同时除以$y^n$，得到$$y^{-n}\cdot\dfrac{dy}{dx}+p(x)y^{1-n}=q(x)$$
-
-    (2)令$z=y^{1-n}$,则$\dfrac{dz}{dx}=(1-n)y^{-n}\ \dfrac{dy}{dx}$,代入上式，得到一阶线性微分方程：
-    $$\dfrac{dz}{dx}+(1-n)p(x)z=(1-n)q(x)$$
-\end{induction}
-\begin{induction}
-    [二阶可降阶微分方程(用换元法化为一阶方程)]
-    (1)$y''=f(x,y')$(不含$y$)
-    
-    令$y'=p,\quad y''=\dfrac{dp}{dx}=p'$,代入上式，得到一阶微分方程：
-    $$p'=f(x,p)$$
-
-    (2)$y''=f(y,y')$(不含$x$)
-    
-    令$y'=p,\quad y''=\dfrac{dp}{dy}=\dfrac{dp}{dy}\cdot \dfrac{dy}{dx}=\dfrac{dp}{dy}\cdot p$,代入上式，得到一阶微分方程：
-    $$\dfrac{dp}{dy}\cdot p=f(y,p)$$   
-
-    (3)$y''=f(y')$(不含$x,y$)
-
-    可按(1)或(2)的方法进行处理;
-\end{induction}
-
-\begin{note}
-    换元过后的方程必须要是常微分方程，因此(1)中使用$\dfrac{dp}{dx}$,(2)中使用$\dfrac{dp}{dy}$,而不能使用$\dfrac{dp}{dx}$.
-\end{note}
-
+\section{常数项级数}
 \begin{definition}
-    [全微分方程(恰当方程)]
-    对于形如：$$M(x,y)dx+N(x,y)dy=0$$的微分方程，若存在函数$u(x,y)$使得：
-    $$\dfrac{\partial u}{\partial x}=M(x,y),\quad \dfrac{\partial u}{\partial y}=N(x,y)$$
-    则该微分方程为全微分方程，其通解为$u(x,y)=C$.
+    [收敛]
+    对于常数项级数 $\sum_{n=1}^{\infty} u_n$，如果部分和 $S_n$ 的极限$\lim_{n \to \infty} S_n$存在，则称该级数收敛；否则称该级数发散。
+\end{definition}
+\begin{induction}
+    [收敛的性质]
+    (1)收敛的线性组合收敛；
+    
+    (2)前有限项不影响敛散性；
+    
+    (3)收敛级数加括号后依旧收敛，但对于发散级数不成立($u_n = (-1)^n$)；
+    
+    (4)收敛的必要条件是：级数的项趋于零。
+\end{induction}
+
+\section{审敛方法}
+\begin{induction}
+    [正项级数的审敛方法]
+    $\bigstar$在使用前必须要确保级数为正项级数。
+
+    (1)充要条件：正项级数 $\sum_{n=1}^{\infty} u_n$ 收敛的充要条件是部分和 $S_n$ 有上界；
+    
+    (2)比较审敛法：大的收敛，小的也收敛；小的发散，大的也发散;
+    
+    极限形式：设 $\lim_{n \to \infty} \dfrac{u_n}{v_n} = l$，则：
+    $0 < l < +\infty$ 时，$\sum u_n$ 与 $\sum v_n$ 同敛散；
+
+    $l = 0$ 时，相当于$ u_n \le v_n$；
+    $l = +\infty$ 时，相当于$ u_n \ge v_n$；
+
+    (3)比值审敛法：设 $\lim_{n \to \infty} \dfrac{u_{n+1}}{u_n} = \rho $，则 $\rho < 1$ 收敛，$\rho > 1$ 发散，$\rho = 1$ 无结论；
+    
+    (4)根值审敛法：设 $\lim_{n \to \infty} \sqrt[n]{u_n} = \rho$，则 $\rho < 1$ 收敛，$\rho > 1$ 发散，$\rho = 1$ 无结论；
+    
+    (5)积分审敛法：
+    
+    设 $f(x)$ 在 $[1, +\infty)$ 上连续、正值、单调递减，则 $\sum_{n=1}^{\infty} f(n)$ 与 $\int_1^{\infty} f(x) dx$ 同敛散；
+\end{induction}
+\begin{note}
+    比值审敛法的极限形式常用$0 < l < +\infty$进行同敛散的等价无穷小替换化简式子，例如：
+    
+    $e^{n^{-\alpha}\ln n}-1 ~\sim~ \ln (1 + n^{-\alpha}\ln n)~\sim~ \dfrac{\ln n}{n^{\alpha}}, n \to \infty$ ；
+    
+    根值审敛法的根号是$\sqrt[n]{u_n}$，而不是$\sqrt{u_n}。$
+\end{note}
+
+\begin{induction}
+    [交错级数审敛法：莱布尼茨]
+    交错级数$\sum(-1)^n u_n(u_n > 0)$ 收敛的充要条件是：
+
+    (1) $ {u_n} $ 单调递减；
+    
+    (2) $\lim_{n \to \infty} u_n = 0$。
+\end{induction}
+\begin{note}
+    判断$ {u_n} $递减的方法：
+    
+    (1)$f(n) = u_n$，则判断$f(x)$在$[A, +\infty)$上单调递减；
+
+    (2)判断$u_{n+1} - u_n < 0$；
+    
+    (3)判断$\dfrac{u_{n+1}}{u_n} < 1$。
+\end{note}
+
+\begin{induction}
+    [绝对收敛与条件收敛]
+    (1) 如果级数 $\sum |u_n|$ 收敛，则称级数 $\sum u_n$ 绝对收敛；
+    
+    (2) 如果级数 $\sum u_n$ 收敛，但 $\sum |u_n|$ 发散，则称级数 $\sum u_n$ 条件收敛。
+\end{induction}
+
+\begin{induction}
+    [泰勒展开在审敛中的应用]
+    将级数逐项进行泰勒展开前几项，得到几个级数的和，根据这几个级数的敛散性来判断原级数的敛散性，当然如果出现两个发散级数就无法判定。
+    
+    例如：$\sum \ln(1+\frac{(-1)^n}{\sqrt{n}})$ = $\sum \left(\frac{(-1)^n}{\sqrt{n}} - \frac{1}{2n} + o(\frac{1}{n})\right)$，其中$\sum \frac{(-1)^n}{\sqrt{n}}$收敛，$\sum \frac{1}{2n}$发散，所以原级数发散。
+\end{induction}
+
+\section{幂级数和收敛半径}
+\begin{definition}
+    [幂级数]
+    幂函数项级数简称幂级数，一般形式为$\sum_{n=0}^{\infty}a_n x^n$,或者$$\sum_{n=0}^{\infty}a_n (x-x_0)^n$$
+
+    幂级数其实是一种级数形式的函数，其敛散性由于$x$的取值而不同，故幂级数的敛散性是一个函数问题.
+    
+    于是定义其收敛点为：使幂级数$\sum_{n=0}^{\infty}a_n (x-x_0)^n$收敛的$x$值；
+
+    所有收敛点构成收敛区域；
+\end{definition}
+
+\begin{theorem}
+    [阿贝尔定理]
+    如果幂级数$\sum_{n=0}^{\infty}a_n x^n$在$x=x_1$处收敛，则在区间$|x|<|x-x_1|$内绝对收敛；
+    
+    如果在$x=x_2$处发散，则在区间$|x|>|x_2-x_0|$内发散。
+\end{theorem}
+\begin{note}
+    阿贝尔定理的结论是：幂级数的收敛区间是一个以$x_0$为中心的区间，收敛区间的长度为$2R$，其中$R$为收敛半径。
+\end{note}
+
+
+\begin{induction}
+    [一般级数$\sum u_n(x)$收敛区域的求法]
+    (1)比值法：$\lim_{n \to \infty} \left|\dfrac{u_{n+1}(x)}{u_n(x)}\right| = \rho(x)$；
+    
+    (2)根值法：$\lim_{n \to \infty} \sqrt[n]{|u_n(x)|} = \rho(x)$。
+
+    由$\rho(x)<1$初步得到收敛区域，而端点处(即为$\rho(x)=1$处)需要额外判定.
+\end{induction}
+\begin{note}
+    对于幂级数$\sum a_n x^n$,$\quad \rho(x)$为$|x|$的一次式，于是特殊化为：
+    
+    (1)比值法：$\lim_{n \to \infty} \left|\dfrac{a_{n+1}}{a_n}\right| = \rho$；
+    
+    (2)根值法：$\lim_{n \to \infty} \sqrt[n]{|a_n|} = \rho$。
+
+    收敛半径$R = \dfrac{1}{\rho}$,$\quad(-R, R)$的端点需要额外判定.
+\end{note}
+
+\begin{corollary}
+    [幂级数变换与收敛的关系]
+    已知幂级数$\sum a_n(x-x_1)^n$的收敛域,怎么得到$\sum b_n(x-x_2)^m$的收敛域呢？
+
+    (1)平移不改变收敛半径，端点保持不变,例如：$$\sum a_n(x-x_1)^n \rightarrow \sum a_n((x-x_2))^n$$
+
+    (2)称上或提出因子$(x-x_0)^k$不改变收敛半径，端点保持不变,例如：$$\sum a_n(x-x_0)^n \rightarrow \sum a_n(x-x_0)^{n+k} = (x-x_0)^k\sum a_n(x-x_0)^n$$
+
+    (3)幂级数的求导与积分不改变收敛半径，端点需要额外判定,例如：$$\sum a_n(x-x_0)^n \rightarrow \sum na_n(x-x_0)^{n-1}, \quad \sum a_n(x-x_0)^n \rightarrow \sum \dfrac{a_n}{n+1}(x-x_0)^{n+1}$$
+\end{corollary}
+
+
+\section{幂级数求和}
+\begin{definition}
+    [级数的和函数]
+    在收敛域上，记$S(x) = \sum_{n=1}^{\infty} u_n(x)，$称$S(x)$为级数的和函数;
+\end{definition}
+
+\begin{induction}
+    [幂级数的运算方法]
+    主要是对求和符号$\sum_{n=0}^{\infty}$的理解，$\sum$是一种运算规则，只对求和变量$n$有关，而$x$,常数均可视为求和无关常数；
+
+    (1)提取因子：$\sum ka_n x^{n+k} = kx^k\sum a_n x^{n};$
+
+    (2)逐项合并：$\sum a_n x^n + \sum b_n x^n = \sum (a_n + b_n)x^n$;
+
+    (3)逐项相乘：$\sum a_n x^n \cdot \sum b_n x^n = \sum c_n x^n$，其中$c_n = a_0b_n + a_1b_{n-1} + ... + a_nb_0$；
+
+    (4)逐项求导：$\dfrac{d}{dx}\sum a_n x^n = \sum na_n x^{n-1}$；
+
+    (5)逐项积分：$\int_{0}^{x} \sum a_n t^n dt = \sum \dfrac{a_n}{n+1}x^{n+1}$;
+
+    (6)变换下标：$\sum_{n=k}^{\infty} a_n x^n = \sum_{n=k+l}^{\infty} a_{n-l} x^{n-l}$;
+\end{induction}
+
+\begin{induction}
+    [和函数的性质]
+    (1)和函数在收敛域内连续；
+
+    (2)和函数在收敛域内可导，且可导的结果仍为幂级数，\textbf{收敛半径不变}:
+    $$\int_{0}^{x}S(t)dt = \int_{0}^{x}\sum_{n=0}^{\infty} a_n t^n dt = \sum_{n=0}^{\infty} \dfrac{a_n}{n+1}x^{n+1}$$
+
+    (3)和函数在收敛域内可积，且可积的结果仍为幂级数，\textbf{收敛半径不变}:
+    $$S'(x) = \dfrac{d}{dx}\sum a_n x^n = \sum_{n=1}^{\infty} na_n x^{n-1}$$
+\end{induction}
+
+\begin{induction}
+    [幂级数求和的常用方法]
+    求和函数$S(x) = \sum_{n=0}^{\infty} a_n x^n$，常用的方法有：
+    
+    (1)利用已知的幂级数求和公式，进行代换、积分、求导等运算,可以：
+    
+    i.先导后积：$S(x) = \int_{0}^{x} \left( \sum_{n=0}^{\infty} a_n t^n \right)' dt;$
+
+    ii.先积后导：$S(x) = \left( \int_{0}^{x} \sum_{n=0}^{\infty} a_n t^n dt \right)';$
+
+    (2)对$S(x) = \sum_{n=0}^{\infty} a_n x^n$求导，将右边化为$S(x),S'(x)$的形式，得到一个微分方程，解出$S(x)$；
+
+    (3)对$S(x) = \sum_{n=0}^{\infty} a_n x^n$进行变换下标，得到一个递推公式，解出$S(x)$。
+\end{induction}
+\begin{note}
+    由于积分、求导虽然不改变积分半径，但会改变端点的敛散性，所以在求和函数时不能只将用到的积分域求并，而是:
+    
+    应该记下积分半径，算出和函数$S(x)$之后再判断端点处$\sum a_n x^n$的敛散性。
+\end{note}
+
+
+
+\section{函数展开为幂级数}
+\begin{definition}
+    [函数展开为幂级数]
+    如果函数$f(x)$在$x_0$处有任意阶导数，则$f(x)$在$x_0$处展开为幂级数的形式为：
+    $$f(x) = \sum_{n=0}^{\infty} \dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n$$
+    被称为$f(x)$在$x_0$处的\textbf{泰勒级数}。
+    
+    若$x_0 = 0$，则称为$f(x)$在$x_0$处的\textbf{麦克劳林级数}。
 \end{definition}
 \begin{note}
-    全微分方程的充分必要条件为：
-    $$\dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}$$
-    可视为两个混合二阶偏导相等。
-
-    解法：先检查充要条件判断是否为全微分方程，若是则通过两个偏导数$M,N$求出$u(x,y)$，若不是则尝试使用积分因子法。
-
-    积分因子法（不在考纲范围内）:
-
-    (1)若$\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}$是$x$的函数，则积分因子为：
-    $$\mu(x)=e^{\int \dfrac{\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}}{N}dx}$$
-
-    (2)若$\dfrac{\partial M}{\partial y}-\dfrac{\partial N}{\partial x}$是$y$的函数，则积分因子为：
-    $$\mu(y)=e^{\int \dfrac{\dfrac{\partial N}{\partial x}-\dfrac{\partial M}{\partial y}}{M}dy}$$
+    此处的泰勒（麦克劳林）展开级数与微分中的泰勒（麦克劳林）展开式保持一致，区别在于：
+    
+    微分中的泰勒（麦克劳林）展开式是一个有限项的多项式，最后剩一个余项（无穷小或者$\exists \delta$形式来表示），
+    而此处的泰勒（麦克劳林）展开级数是一个无穷项的级数。
 \end{note}
 
 \begin{induction}
-    [二阶常系数\textbf{齐次}微分方程]
-    (1)形式：$y''+py'+qy=0$($p,q$为常数)
-
-    (2)解的结构：$y_1(x), y_2(x)$为方程的\textbf{线性无关特解}，则$y=C_1y_1(x)+C_2y_2(x)$为方程的通解（类似线代中的线性无关解构成解空间）；
-
-    (3)$\bigstar$通解：
+    [展开方法]
+    (1)公式直接法:直接套用泰勒（麦克劳林）展开公式，计算$f^{(n)}(x_0)$，然后代入公式即可；
     
-    i:特征方程：$r^2+pr+q=0$，设其根为$r_1,r_2$，则通解为：
-    $$y=C_1e^{r_1x}+C_2e^{r_2x}$$
-    ii:若$r_1=r_2=r$，则通解为：
-    $$y=(C_1+C_2x)e^{rx}$$
-    iii:若$r_1=\alpha+\beta i,r_2=\alpha-\beta i$，则通解为：
-    $$y=e^{\alpha x}(C_1\cos \beta x+C_2\sin \beta x)$$
+(2)利用已知的幂级数展开式：通过代数运算、积分、求导等方法得到已知的函数，然后进行展开；
 \end{induction}
 \begin{note}
-    猜测$y=e^{rx}$，代入方程得到特征方程$r^2+pr+q=0$，解出$r_1,r_2$，通过常数变易法（ii）、欧拉公式（iii）得到通解；
+    $f(x) = \ln (1-x+x^2) = \ln(1+x^3) - \ln(1+x)$直接展开；
     
-    (i)(ii)(iii)的通解均为线性无关的特解构成的线性组合。
+    $f(x) = \arctan\dfrac{1+x}{1-x} $则可以通过先求导、再展开、最后积分还原.
 \end{note}
 
-\begin{induction}
-    [二阶常系数\textbf{非齐次}微分方程]
-    (1)形式：$y''+py'+qy=f(x)$($p,q$为常数)
 
-    (2)解的结构：
-    
-    $y_1(x)$是$y''+py'+qy=f_1(x)$的解，$y_2(x)$是$y''+py'+qy=f_2(x)$的解，则$y=Ay_1(x)+By_2(x)$为方程$y''+py'+qy=Af_1(x)+Bf_2(x)$的解；
-
-    $y_1^*,y_2^*$是$y''+py'+qy=f(x)$的特解,则$y=y_1^*-y_2^*$为方程$y''+py'+qy=0$的特解；
-
-    (3)$\bigstar$通解：对应齐次方程的通解+非齐次方程的特解；
-
-    (4)$\bigstar$特解：
-    
-    记$P(x)、Q(x)、R(x)$为$x$的多项式，$P_n(x)$表示n次多项式。
-
-    i:$f(x) = P_n(x)e^{\alpha x}$,特解$y* = r^{\alpha x}Q_n(x)x^k$，
-    
-    \textcolor{lightgray}{$\quad$k为$\alpha$在特征方程中的重数(0,1,2)，$Q_n(x)$为待定系数的n次多项式;}
-
-
-    ii:$f(x) = e^{\alpha x}[P_m(x)\cos \beta x + P_n(x)\sin \beta x]$,
-    
-    特解$y* = e^{\alpha x}[Q_l(x)\cos \beta x+R_l(x)\sin \beta x]x^k$，
-
-    \textcolor{lightgray}{$\quad$k为$\alpha \pm \beta i$在特征方程中的重数(0,1)，$Q_l(x),R_l(x)$为待定系数的$l$次多项式，$l=max(m,n)$;}
-\end{induction}
-
-\begin{induction}
-    [n(n>2)阶常系数齐次微分方程]
-    (1)形式：$y^{(n)}+p_1y^{(n-1)}+\cdots+p_{n-1}y'+p_ny=0$($p_i$为常数)
-
-    (2)解的结构：解出特征方程的根，每一个根（包括重根）对应一个线性无关的特解，对应如下：
-
-    i:若$r_i$为单根，则对应特解$y_i=e^{r_ix}$；
-
-    ii:若$r_i$为m重根，则对应特解$y_i=e^{r_ix},xe^{r_ix},\cdots,x^{m-1}e^{r_ix}$；
-
-    iii:若$r_i=\alpha \pm \beta i$为单复根，则对应特解$y_i=e^{\alpha x}\cos \beta x,e^{\alpha x}\sin \beta x$；
-
-    iv:若$r_i=\alpha \pm \beta i$为m重复根，则对应特解
-    
-    $y_i=x^{k}e^{\alpha x}\cos \beta x,x^{k}e^{\alpha x}\sin \beta x, k =0,1,\ldots,m-1$；
-
-    (3)$\bigstar$通解：所有线性无关特解的线性组合；
-\end{induction}
+\section{傅里叶级数}
+\begin{definition}
+    [周期为$2l$的傅里叶级数]
+    如果函数$f(x)$可以以$2l$为周期且在区间$[-l, l]$上可积，则$f(x)$可以展开为傅里叶级数：
+    $$f(x) \backsim  \frac{a_0}{2} + \sum_{n=1}^{\infty} (a_n \cos \frac{n\pi x}{l} + b_n \sin \frac{n\pi x}{l}) = S(x)$$
+    其中系数$a_n$和$b_n$由下列公式给出：
+    $$a_n = \frac{1}{l} \int_{-l}^{l} f(x) \cos \frac{n\pi x}{l} dx, \quad b_n = \frac{1}{l} \int_{-l}^{l} f(x) \sin \frac{n\pi x}{l} dx$$
+\end{definition}
 \begin{note}
-    对应的非齐次方程的解依然为齐次方程的通解+非齐次方程的特解，但未见考察。
+    不难发现：右边傅里叶级数的周期由最大的周期($a_1\cos\frac{\pi x}{l}, \quad b_1\sin\frac{\pi x}{l}$)决定,为$2l$，与$f(x)$周期一致;
+
+    如果周期为$2l = 2\pi$，则傅里叶级数可以写为：
+    $$f(x) \backsim  \frac{a_0}{2} + \sum_{n=1}^{\infty} (a_n \cos nx + b_n \sin nx)$$
+    $$a_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \cos nx dx, \quad b_n = \frac{1}{\pi} \int_{-\pi}^{\pi} f(x) \sin nx dx$$
 \end{note}
 
+\begin{theorem}
+    [狄利克雷收敛定理]
+    $f(x)$是以$2l$为周期且在区间$[-l, l]$上可积的函数，则$f(x)$的傅里叶级数$S(x)$处处收敛于$f(x)$的\textbf{平均值}：
+    $$S(x) = \frac{f(x^+) + f(x^-)}{2}$$
+\end{theorem}
+
 \begin{induction}
-    [欧拉方程]
-    (1)形式：$x^ny^{(n)}+p_1x^{n-1}y^{(n-1)}+\cdots+p_{n-1}xy'+p_ny=f(x)$($p_i$为常数)
-
-    一般考察二阶形式：$x^2y''+p_1xy'+p_ny=f(x)$($p_i$为常数)
-
-    (2)解法：
-    $x>0$,令$x=e^t$,计算$y'',y'$并代入欧拉方程，得到一个常系数齐次微分方程；
+    [函数的正弦展开、余弦展开]
     
-    $x<0$,令$x=-e^t$;
+    若函数$f(x)$定义在$[0,l]$,根据傅里叶级数的展开要求，被展开函数必须在$[-l,l]$上可积，为了将$f(x)$展开为正弦级数(余弦级数)，需要先进行周期奇(偶)延拓，然后再进行展开并将变量限制在$[0,l]$上.
+
+    (1)周期奇延拓：
+    $F(x) = \begin{cases}
+        f(x), & 0 < x \le l,\\
+        0, & x = 0,\\
+        -f(-x), & -l \le x < 0,
+    \end{cases}$
+    $$a_n = \frac{1}{l} \int_{-l}^{l} F(x) \cos \frac{n\pi x}{l} dx = 0, \quad b_n = \frac{1}{l} \int_{-l}^{l} F(x) \sin \frac{n\pi x}{l} dx = \frac{2}{l} \int_{0}^{l} f(x) \sin \frac{n\pi x}{l} dx,$$
+    $$f(x) \backsim \sum_{n=1}^{\infty} b_n \sin \frac{n\pi x}{l}.$$
+    (2)周期偶延拓：
+    $F(x) = \begin{cases}
+        f(x), & 0 \le x \le l,\\
+        f(-x), & -l \le x < 0.
+    \end{cases}$
+    $$a_n = \frac{1}{l} \int_{-l}^{l} F(x) \cos \frac{n\pi x}{l} dx = \frac{2}{l} \int_{0}^{l} f(x) \cos \frac{n\pi x}{l} dx, \quad b_n = \frac{1}{l} \int_{-l}^{l} F(x) \sin \frac{n\pi x}{l} dx = 0,$$
+    $$f(x) \backsim \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos \frac{n\pi x}{l}.$$
+
 \end{induction}
 
-几何应用、物理应用的关键就是根据几何物理关系列出微分方程，列的方程尽量是关于要求的两个变量的，避免中间变量的参与.
+
+
+
+
+
+
 
 
 
