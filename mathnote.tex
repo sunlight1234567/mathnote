@@ -2125,6 +2125,204 @@ $\bigstar\bigstar\bigstar$ \textbf{弧长微分:}$$ds = \sqrt{(dx)^2 + (dy)^2}$$
 
 
 
+% ===================================
+\chapter{空间几何}
+% ===================================
+本章为多元积分的预备知识，在中学空间几何(直线、平面)的基础上延伸至空间曲线、曲面，并初步介绍了场论知识；
+
+分为向量代数、空间直线与平面、空间曲线与曲面、场论四个部分。
+
+\section{向量代数}
+\begin{definition}
+    [向量的运算]
+    (1)数量积
+
+    (2)向量积
+    
+    (3)混合积
+
+\end{definition}
+\begin{definition}
+    [向量的方向角、方向余弦]
+    向量$\overrightarrow{a} = (x,y,z)$的方向角为$\alpha,\beta,\gamma$，则有
+    $$\cos\alpha = \dfrac{x}{|\overrightarrow{a}|},\quad \cos\beta = \dfrac{y}{|\overrightarrow{a}|},\quad \cos\gamma = \dfrac{z}{|\overrightarrow{a}|}.$$
+
+    $\overrightarrow{a}$的单位向量为$\overrightarrow{e} = \dfrac{\overrightarrow{a}}{|\overrightarrow{a}|} = (\cos\alpha,\cos\beta,\cos\gamma)$。
+\end{definition}
+
+\section{空间直线与平面}
+这一部分完全为高中知识，相关公式不再赘述，需要注意一下过一条直线的平面束的方程。
+
+\section{空间曲线与曲面}
+\begin{definition}
+    [空间曲线]
+    (1)一般式(两面包夹之式)：
+    $\begin{cases}
+        F(x,y,z) = 0,\\
+        G(x,y,z) = 0.
+    \end{cases}$
+    
+    (2)参数方程：
+    $\begin{cases}
+        x = \varphi (t),\\
+        y = \psi (t),\quad t\in[\alpha,\beta].\\
+        z = \omega (t),
+    \end{cases}$
+    
+\end{definition}
+
+\begin{induction}
+    [空间曲面]
+    空间曲面的方程有两种形式：显式方程$z = f(x,y)$和隐式方程$F(x,y,z) = 0$。
+    
+    考研常考：
+    
+    (1)二次曲面，$F(x,y,z)=0$为二次方程,例如:
+    
+    椭球面：
+
+    单页双曲面：
+
+    双叶双曲面：
+
+    椭圆抛物面：
+
+    椭圆锥面：
+
+    双曲抛物面：
+
+    (2)$R^2$中的曲线$F(x,y)=0$在$R^3$中表示柱面，例如：
+    椭圆柱面、双曲柱面、抛物柱面等；
+
+    (3)旋转曲面：曲线$\varGamma$绕一条直线(一般为坐标轴)旋转围成的曲面。
+    
+    设$ xoz $平面上一曲线$ F(x,y,z) = 0 $上任一点$P_0(x_0, y_0, 0)$,绕$z$轴旋转后对应点$P(x,y,z)$满足：
+    $$\begin{cases}
+        x_0^2 + y_0^2 = x^2 + y^2,\\
+        z_0 = z.
+    \end{cases}$$
+    代入$F(x_0,y_0,z_0) = 0$即可得到旋转曲面的方程。
+\end{induction}
+
+\begin{induction}
+    [空间曲线的切线与法平面]
+    (1)设空间曲线$\varGamma$的参数方程为
+    $\begin{cases}
+        x = x (t),\\
+        y = y (t),\quad t\in[\alpha,\beta].\\
+        z = z (t),
+    \end{cases}$
+    则曲线$\varGamma$在点$P_0(x_0,y_0,z_0)，t = t_0$处：
+    
+    $\bigstar$切线方向向量为：${\tau } = (x'(t_0),y'(t_0),z'(t_0)),$
+
+    切线方程为：
+    $\dfrac{x-x_0}{x'(t_0)} = \dfrac{y-y_0}{y'(t_0)} = \dfrac{z-z_0}{z'(t_0)},$
+
+    法平面方程为：
+    $x'(t_0)(x-x_0) + y'(t_0)(y-y_0) + z'(t_0)(z-z_0) = 0.$
+    
+    (2)设空间曲线$\varGamma$的方程组形式为：
+    $\begin{cases}
+        F(x,y,z) = 0,\\
+        G(x,y,z) = 0,
+    \end{cases}$
+    
+    当雅可比行列式
+    $\dfrac{\partial(F,G)}{\partial(x,y)}  = \begin{vmatrix}
+        \dfrac{\partial F}{\partial x} & \dfrac{\partial F}{\partial y} \\
+        \dfrac{\partial G}{\partial x} & \dfrac{\partial G}{\partial y}
+    \end{vmatrix} \neq 0$,可以确定
+    $\begin{cases}
+        x = x,\\
+        y = y (x),\\
+        z = z (x).
+    \end{cases}$
+    
+    则曲线$\varGamma$在点$P_0(x_0,y_0,z_0)$处的
+    
+    $\bigstar$切向量：
+    $\vec{\tau} = \begin{vmatrix}
+        \vec{i} & \vec{j} & \vec{k} \\
+        \dfrac{\partial F}{\partial x} & \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial z} \\
+        \dfrac{\partial G}{\partial x} & \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial z}
+    \end{vmatrix} = (A,B,C).$
+    
+    切线方程、法平面方程$\cdot$.
+\end{induction}
+
+\begin{induction}
+    [空间曲面的切平面与法线]
+    主要是求出空间曲面$\varSigma$在点$P_0(x_0,y_0,z_0)$处法向量.
+    
+    (1)隐式方程为$F(x,y,z) = 0$，
+    
+    $\bigstar$法向量为：
+    $\vec{n} = (F_x(x_0,y_0,z_0), F_y(x_0,y_0,z_0), F_z(x_0,y_0,z_0)),$
+
+    (2)显式方程为$z = f(x,y)\Longrightarrow f(x,y) - z = 0$:    
+    
+    法向量为：
+    $\vec{n} = (f_x(x_0,y_0), f_y(x_0,y_0), -1),$
+    
+\end{induction}
+
+
+\section{场论}
+(1)标量场：在空间中每一点都对应一个标量的函数$u = f(x,y,z)$，称为标量场。
+
+(2)向量场：在空间中每一点都对应一个向量的函数$\overrightarrow{A} = \overrightarrow{A}(x,y,z)$，称为向量场。
+\begin{definition}
+    [方向导数]
+    设标量场$u = u(x,y,z)$在点$P_0(x_0,y_0,z_0)$处可微，
+    
+    $\overrightarrow{l} = (\cos \alpha, \cos \beta, \cos \gamma)$为过点$P_0$的单位向量，$P$为沿$\overrightarrow{l}$方向上的一点，$|PP_0| = \Delta s，P(x_0+\Delta s\cos\alpha, y_0+\Delta s\cos\beta, z_0+\Delta s\cos\gamma),$
+    
+    则沿$\overrightarrow{l}$方向的方向导数为：
+    $$\dfrac{\partial u}{\partial l} = \lim_{\Delta s\to 0}\dfrac{u(P) - u(P_0)}{\Delta s} = \nabla u \cdot \overrightarrow{l}$$
+\end{definition}
+
+\begin{definition}
+    [梯度]
+    设标量场$u = u(x,y,z)$在点$P_0(x_0,y_0,z_0)$处可微，则称向量
+    $$grad \ u = \nabla u = \left(\dfrac{\partial u}{\partial x}, \dfrac{\partial u}{\partial y}, \dfrac{\partial u}{\partial z}\right)$$
+    为标量场$u$在点$P_0$处的梯度。
+\end{definition}
+\begin{note}
+    $\nabla$是一个算子符号，表示运算：$\nabla = \dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}$；
+
+    梯度的方向是函数增长最快的方向，梯度的模是函数在该方向上的最大变化率；
+
+    二元函数$f(x,y)$与三元函数类似。
+\end{note}
+
+
+\begin{definition}
+    [散度]
+    设向量场$\overrightarrow{A} = \overrightarrow{A}(x,y,z) = P(x,y,z)\overrightarrow{i} + Q(x,y,z)\overrightarrow{j} + R(x,y,z)\overrightarrow{k}$在点$P_0(x_0,y_0,z_0)$处可微，则称标量
+    $$div \ \overrightarrow{A} = \dfrac{\partial P}{\partial x} + \dfrac{\partial Q}{\partial y} + \dfrac{\partial R}{\partial z}$$
+    为向量场$\overrightarrow{A}$在点$P_0$处的散度。
+\end{definition}
+\begin{note}
+    $div \ \overrightarrow{A} = \nabla \cdot \overrightarrow{A} = \left(\dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}\right) \cdot (P, Q, R)$
+\end{note}
+\begin{definition}
+    [旋度]
+    设向量场$\overrightarrow{A} = \overrightarrow{A}(x,y,z) = P(x,y,z)\overrightarrow{i} + Q(x,y,z)\overrightarrow{j} + R(x,y,z)\overrightarrow{k}$在点$P_0(x_0,y_0,z_0)$处可微，则称向量
+    $$rot \ \overrightarrow{A} = \begin{vmatrix}
+        \vec{i} & \vec{j} & \vec{k} \\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}$$
+    为向量场$\overrightarrow{A}$在点$P_0$处的旋度。
+\end{definition}
+\begin{note}
+    $rot \ \overrightarrow{A} = \nabla \times \overrightarrow{A} = \left(\dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}\right) \times (P, Q, R)$
+\end{note}
+
+
+
+
 
 
 
