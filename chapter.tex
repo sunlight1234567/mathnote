@@ -391,208 +391,253 @@
 
 
 % ===================================
-\chapter{空间几何}
-% ===================================
-本章为多元积分的预备知识，在中学空间几何(直线、平面)的基础上延伸至空间曲线、曲面，并初步介绍了场论知识；
+\chapter{多元积分}
+% ====================================
 
-分为向量代数、空间直线与平面、空间曲线与曲面、场论四个部分。
+本章分为：三重积分、第一型曲线积分、第一型曲面积分、第二型曲线积分、第二型曲面积分。
 
-\section{向量代数}
-\begin{definition}
-    [向量的运算]
-    (1)数量积
+\section{三重积分}
+$ \iiint f(x,y,z)dx dy dz$ 
 
-    (2)向量积
-    
-    (3)混合积
+三重积分的性质与二重积分、定积分类似，具有：有界性、线性性质、可加性、区间可加性、保号性、符合 估值定理、中值定理；
 
-\end{definition}
-\begin{definition}
-    [向量的方向角、方向余弦]
-    向量$\overrightarrow{a} = (x,y,z)$的方向角为$\alpha,\beta,\gamma$，则有
-    $$\cos\alpha = \dfrac{x}{|\overrightarrow{a}|},\quad \cos\beta = \dfrac{y}{|\overrightarrow{a}|},\quad \cos\gamma = \dfrac{z}{|\overrightarrow{a}|}.$$
+对称性：\textbf{普通对称性}、\textbf{轮换对称性}，例如:
 
-    $\overrightarrow{a}$的单位向量为$\overrightarrow{e} = \dfrac{\overrightarrow{a}}{|\overrightarrow{a}|} = (\cos\alpha,\cos\beta,\cos\gamma)$。
-\end{definition}
-
-\section{空间直线与平面}
-这一部分完全为高中知识，相关公式不再赘述，需要注意一下过一条直线的平面束的方程。
-
-\section{空间曲线与曲面}
-\begin{definition}
-    [空间曲线]
-    (1)一般式(两面包夹之式)：
-    $\begin{cases}
-        F(x,y,z) = 0,\\
-        G(x,y,z) = 0.
-    \end{cases}$
-    
-    (2)参数方程：
-    $\begin{cases}
-        x = \varphi (t),\\
-        y = \psi (t),\quad t\in[\alpha,\beta].\\
-        z = \omega (t),
-    \end{cases}$
-    
-\end{definition}
+$\omega = \{ (x,y,z)|x+y+z<=1, x,y,z>=0 \}, \iiint\limits_{\omega} x + 2y + 3z \, dv = \iiint\limits_{\omega}6x \, dv$
 
 \begin{induction}
-    [空间曲面]
-    空间曲面的方程有两种形式：显式方程$z = f(x,y)$和隐式方程$F(x,y,z) = 0$。
+    [计算]
+    (1)直角坐标系
+
+    先一后二(切条)：$\iiint\limits_{\varOmega } f(x,y,z)dv = \iint\limits_{D_{xy}} d\sigma \int_{z_1(x,y)}^{z_2(x,y)} dz$;
+
+    先二后一(切片)：$\iiint\limits_{\varOmega } f(x,y,z)dv = \int_{z_1}^{z_2} dz \iint\limits_{D_{xy}} f(x,y,z) d\sigma$;
     
-    考研常考：
-    
-    (1)二次曲面，$F(x,y,z)=0$为二次方程,例如:
-    
-    椭球面：
+    (2)柱面坐标系
 
-    单页双曲面：
-
-    双叶双曲面：
-
-    椭圆抛物面：
-
-    椭圆锥面：
-
-    双曲抛物面：
-
-    (2)$R^2$中的曲线$F(x,y)=0$在$R^3$中表示柱面，例如：
-    椭圆柱面、双曲柱面、抛物柱面等；
-
-    (3)旋转曲面：曲线$\varGamma$绕一条直线(一般为坐标轴)旋转围成的曲面。
-    
-    设$ xoz $平面上一曲线$ F(x,y,z) = 0 $上任一点$P_0(x_0, y_0, 0)$,绕$z$轴旋转后对应点$P(x,y,z)$满足：
-    $$\begin{cases}
-        x_0^2 + y_0^2 = x^2 + y^2,\\
-        z_0 = z.
-    \end{cases}$$
-    代入$F(x_0,y_0,z_0) = 0$即可得到旋转曲面的方程。
-\end{induction}
-
-\begin{induction}
-    [空间曲线的切线与法平面]
-    (1)设空间曲线$\varGamma$的参数方程为
-    $\begin{cases}
-        x = x (t),\\
-        y = y (t),\quad t\in[\alpha,\beta].\\
-        z = z (t),
+    令$\begin{cases}
+        x = r \cos \theta,\\
+        y = r \sin \theta,\\
+        z = z,
     \end{cases}$
-    则曲线$\varGamma$在点$P_0(x_0,y_0,z_0)，t = t_0$处：
-    
-    $\bigstar$切线方向向量为：${\tau } = (x'(t_0),y'(t_0),z'(t_0)),$
+    有：
+    $$\iiint\limits_{\omega} f(x,y,z)\, dv = \iiint\limits_{\omega} f(r \cos \theta,r \sin \theta,z)\, r drd\theta dz.$$
+    这种计算方法其实是将"先二后一"中的"二重积分"使用极坐标进行计算；
 
-    切线方程为：
-    $\dfrac{x-x_0}{x'(t_0)} = \dfrac{y-y_0}{y'(t_0)} = \dfrac{z-z_0}{z'(t_0)},$
-
-    法平面方程为：
-    $x'(t_0)(x-x_0) + y'(t_0)(y-y_0) + z'(t_0)(z-z_0) = 0.$
+    (3)球坐标系
     
-    (2)设空间曲线$\varGamma$的方程组形式为：
     $\begin{cases}
-        F(x,y,z) = 0,\\
-        G(x,y,z) = 0,
+        x = r \sin \varphi \cos \theta,\\
+        y = r \sin \varphi \sin \theta,\quad dv = r^2 \sin \varphi dr d\varphi d\theta \\
+        z = r \cos \varphi,
     \end{cases}$
     
-    当雅可比行列式
-    $\dfrac{\partial(F,G)}{\partial(x,y)}  = \begin{vmatrix}
-        \dfrac{\partial F}{\partial x} & \dfrac{\partial F}{\partial y} \\
-        \dfrac{\partial G}{\partial x} & \dfrac{\partial G}{\partial y}
-    \end{vmatrix} \neq 0$,可以确定
-    $\begin{cases}
-        x = x,\\
-        y = y (x),\\
-        z = z (x).
-    \end{cases}$
+    对于坐标系中一点$P(x,y,z)$, $r = \sqrt{x^2+y^2+z^2}$为到原点的距离，
     
-    则曲线$\varGamma$在点$P_0(x_0,y_0,z_0)$处的
-    
-    $\bigstar$切向量：
-    $\vec{\tau} = \begin{vmatrix}
-        \vec{i} & \vec{j} & \vec{k} \\
-        \dfrac{\partial F}{\partial x} & \dfrac{\partial F}{\partial y} & \dfrac{\partial F}{\partial z} \\
-        \dfrac{\partial G}{\partial x} & \dfrac{\partial G}{\partial y} & \dfrac{\partial G}{\partial z}
-    \end{vmatrix} = (A,B,C).$
-    
-    切线方程、法平面方程$\cdot$.
+    $\varphi$为$\overrightarrow{OP}$的$z$方向角，$\theta$为$\overrightarrow{OP}$在$xOy$投影的x方向角。
+
+
 \end{induction}
-
-\begin{induction}
-    [空间曲面的切平面与法线]
-    主要是求出空间曲面$\varSigma$在点$P_0(x_0,y_0,z_0)$处法向量.
-    
-    (1)隐式方程为$F(x,y,z) = 0$，
-    
-    $\bigstar$法向量为：
-    $\vec{n} = (F_x(x_0,y_0,z_0), F_y(x_0,y_0,z_0), F_z(x_0,y_0,z_0)),$
-
-    (2)显式方程为$z = f(x,y)\Longrightarrow f(x,y) - z = 0$:    
-    
-    法向量为：
-    $\vec{n} = (f_x(x_0,y_0), f_y(x_0,y_0), -1),$
-    
-\end{induction}
-
-
-\section{场论}
-(1)标量场：在空间中每一点都对应一个标量的函数$u = f(x,y,z)$，称为标量场。
-
-(2)向量场：在空间中每一点都对应一个向量的函数$\overrightarrow{A} = \overrightarrow{A}(x,y,z)$，称为向量场。
-\begin{definition}
-    [方向导数]
-    设标量场$u = u(x,y,z)$在点$P_0(x_0,y_0,z_0)$处可微，
-    
-    $\overrightarrow{l} = (\cos \alpha, \cos \beta, \cos \gamma)$为过点$P_0$的单位向量，$P$为沿$\overrightarrow{l}$方向上的一点，$|PP_0| = \Delta s，P(x_0+\Delta s\cos\alpha, y_0+\Delta s\cos\beta, z_0+\Delta s\cos\gamma),$
-    
-    则沿$\overrightarrow{l}$方向的方向导数为：
-    $$\dfrac{\partial u}{\partial l} = \lim_{\Delta s\to 0}\dfrac{u(P) - u(P_0)}{\Delta s} = \nabla u \cdot \overrightarrow{l}$$
-\end{definition}
-
-\begin{definition}
-    [梯度]
-    设标量场$u = u(x,y,z)$在点$P_0(x_0,y_0,z_0)$处可微，则称向量
-    $$grad \ u = \nabla u = \left(\dfrac{\partial u}{\partial x}, \dfrac{\partial u}{\partial y}, \dfrac{\partial u}{\partial z}\right)$$
-    为标量场$u$在点$P_0$处的梯度。
-\end{definition}
 \begin{note}
-    $\nabla$是一个算子符号，表示运算：$\nabla = \dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}$；
+类似二重积分换元，三重积分微分变换之后多出来的因子来自$|J|$：
 
-    梯度的方向是函数增长最快的方向，梯度的模是函数在该方向上的最大变化率；
+$J = \dfrac{\partial(x,y,z)}{\partial(r,\varphi,\theta)} = $
+    $\begin{vmatrix}
+        \dfrac{\partial x}{\partial r}, \dfrac{\partial x}{\partial \varphi}, \dfrac{\partial x}{\partial \theta}\\
+        \dfrac{\partial y}{\partial r}, \dfrac{\partial y}{\partial \varphi}, \dfrac{\partial y}{\partial \theta}\\
+        \dfrac{\partial z}{\partial r}, \dfrac{\partial z}{\partial \varphi}, \dfrac{\partial z}{\partial \theta}
+    \end{vmatrix}$
+\end{note}
 
-    二元函数$f(x,y)$与三元函数类似。
+\begin{induction}
+    [三重积分的应用]
+    (1)体积：$V = \iiint \,dv;$
+
+    (2)质心：$\overline{x} = \dfrac{\iiint x \rho(x,y,z)dv}{\iiint \rho(x,y,z)dv};$
+
+    (3)转动惯量：$I_x = \iiint(y^2 + z^2)\rho(x,y,z)dv,$
+    
+    $I_o = \iiint(x^2 + y^2 + z^2)\rho(x,y,z)dv;$
+
+    (4)万有引力：$F_x = Gm\iiint \dfrac{\rho(x,y,z)(x-x_0)}{[(x-x_0)^2+(y-y_0)^2+(z-z_0)^2]^{\frac{3}{2}}}dv;$
+
+\end{induction}
+\begin{note}
+(1)质心公式中，若$\rho(x,y,z)\equiv 1$，则质心即为形心：
+$\overline{x} = \frac{\iiint x dv}{\iiint dv}.$
+
+$\iiint x dv = \overline{x} \iiint dv.$
 \end{note}
 
 
+\section{第一型曲线、曲面积分}
+第一型曲线积分、第一型曲面积分其实分别是：定积分在曲线上、二重积分在曲面上的推广(从积分变量看).
+
+二者均具备二重积分、三重积分的性质,不再赘述其性质。
+\subsection{第一型曲线积分}
+定积分沿着线$"y=0"$进行积分，当这条线变为曲线时，积分就变为曲线积分。
+\begin{induction}
+    [第一型曲线积分的计算]
+    微分变量$ds = \sqrt{d^2x + d^2y + d^2z\,}.$
+
+    (1)平面曲线积分 ： $\int_L f(x,y)ds$
+
+    i.$\,y = y(x): \quad ds = \sqrt{1 + \left(\frac{dy}{dx}\right)^2} \, dx;$
+    
+    ii.参数方程：$ ds = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2} \, dt;$
+
+    iii.极坐标：$ds = \sqrt{r^2 + \left(\frac{dr}{d\theta}\right)^2} \, d\theta.$
+
+
+    (2)空间曲线 : $\int_\varGamma f(x,y,z)ds$
+
+    i.参数方程：$ds = \sqrt{\left(\frac{dx}{dt}\right)^2 + \left(\frac{dy}{dt}\right)^2 + \left(\frac{dz}{dt}\right)^2} \, dt.$
+\end{induction}
+
+\subsection{第一型曲面积分}
+二重积分积分沿着平面$xOy$进行积分，当平面变为曲面时，积分就变为曲面积分.
+\begin{induction}
+    [第一型曲面积分的计算]
+    $\Sigma:\, z=z(x,y)$
+
+    $\iint\limits_{\Sigma} f(x,y,z)ds = \iint\limits_{D_{xy}} f(x,y,z(x,y)) \sqrt{1 + \left(\frac{\partial z}{\partial x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2} \, dx dy.$  
+    
+    $D_{xy}$为$\Sigma$在$xOy$平面上的投影。
+
+    \color{blue}{$z = f(x,y)$必须是单值函数才能进行投影，否则需要使用对称性、拆分区域处理。}
+\end{induction}
+\begin{note}
+几何投影法:
+
+微元 $dS$ 与其在 $xOy$ 平面上的投影微元 $dxdy$ 之间满足：
+$$dS = \frac{dxdy}{|\cos \gamma|}$$
+
+其中 $\gamma$ 是曲面在该点的法向量与 $z$ 轴正方向的夹角。
+
+对于显式曲面 $z=f(x,y)$，法向量可取 $(-f_x, -f_y, 1)$，于是
+$\cos\gamma = \frac{1}{\sqrt{1+f_x^2+f_y^2}}$
+\end{note}
+
+\section{第二型曲线、曲面积分}
+\subsection{第二型曲线积分}
 \begin{definition}
-    [散度]
-    设向量场$\overrightarrow{A} = \overrightarrow{A}(x,y,z) = P(x,y,z)\overrightarrow{i} + Q(x,y,z)\overrightarrow{j} + R(x,y,z)\overrightarrow{k}$在点$P_0(x_0,y_0,z_0)$处可微，则称标量
-    $$div \ \overrightarrow{A} = \dfrac{\partial P}{\partial x} + \dfrac{\partial Q}{\partial y} + \dfrac{\partial R}{\partial z}$$
-    为向量场$\overrightarrow{A}$在点$P_0$处的散度。
+    [平面中的第二型曲线积分]
+    变力$\overrightarrow{F}(x,y) = P(x,y)\overrightarrow{i} + Q(x,y)\overrightarrow{j}$在有向曲线$L$上对质点做功的曲线积分定义为：
+    $$\int_L \overrightarrow{F} \cdot d\overrightarrow{r} = \int_L P(x,y)dx + Q(x,y)dy.$$
+\end{definition}
+\begin{induction}
+    [性质]
+    (1)线性性质：$\int_L (\alpha \overrightarrow{F_1} + \beta \overrightarrow{F_2}) \cdot d\overrightarrow{r} = \alpha \int_L \overrightarrow{F_1} \cdot d\overrightarrow{r} + \beta \int_L \overrightarrow{F_2} \cdot d\overrightarrow{r}$
+
+    (2)可加性：$\int_{L_1+L_2} \overrightarrow{F} \cdot d\overrightarrow{r} = \int_{L_1} \overrightarrow{F} \cdot d\overrightarrow{r} + \int_{L_2} \overrightarrow{F} \cdot d\overrightarrow{r}$
+
+    (3)方向性：$\int_{-L} Pdx + Qdy = -\int_L Pdx + Qdy$
+\end{induction}
+\begin{induction}
+    [计算]
+    (1)基本方法——结合参数方程转化为定积分
+    $$\int_L P(x,y)dx + Q(x,y)dy = \int_a^b [P(x(t),y(t))\frac{dx}{dt} + Q(x(t),y(t))\frac{dy}{dt}] dt$$
+    
+    (2)$\bigstar\bigstar\bigstar$格林公式
+    $$\oint_{L} Pdx + Qdy = \iint\limits_{D} \left(\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y}\right) dxdy$$
+    $$\oint_{L} Pdx = -\iint\limits_{D} \frac{\partial P}{\partial y} dxdy,\quad \oint_{L} Qdy = \iint\limits_{D} \frac{\partial Q}{\partial x} dxdy$$
+    
+    (3)与路径无关
+
+    在$D_{xy}$内有$\left(\frac{\partial Q}{\partial x} \equiv  \frac{\partial P}{\partial y}\right)$,则$\int_L Pdx + Qdy$与路径无关。
+\end{induction}
+\begin{note}
+    $\bigstar$格林公式常见的考察形式为对路径的拆补，尤其是内部有奇点的情况。
+\end{note}
+
+\subsection{第二型曲面积分}
+\begin{definition}
+    [第二型曲面积分与通量]
+    第二型曲面积分的含义就是向量场$$\overrightarrow{F}(x,y,z) = P(x,y,z)\overrightarrow{i} + Q(x,y,z)\overrightarrow{j} + R(x,y,z)\overrightarrow{k}$$在有向曲面$\Sigma$上对单位法向量的通量：
+    $$\iint\limits_{\Sigma} \overrightarrow{F} \cdot \overrightarrow{n} dS = \iint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy.$$
+    (左边为第一型曲面积分，右边为第二型曲面积分)。
 \end{definition}
 \begin{note}
-    $div \ \overrightarrow{A} = \nabla \cdot \overrightarrow{A} = \left(\dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}\right) \cdot (P, Q, R)$
+    $\overrightarrow{n} = (\cos \alpha, \cos \beta, \cos \gamma),\overrightarrow{n}\cdot dS = (dy dz, dz dx, dx dy)$可以视为$dS$分别在$x,y,z$方向做投影.
+
+    $\Sigma$是有向的，$\overrightarrow{n}$的方向与$\Sigma$的方向一致。
 \end{note}
-\begin{definition}
-    [旋度]
-    设向量场$\overrightarrow{A} = \overrightarrow{A}(x,y,z) = P(x,y,z)\overrightarrow{i} + Q(x,y,z)\overrightarrow{j} + R(x,y,z)\overrightarrow{k}$在点$P_0(x_0,y_0,z_0)$处可微，则称向量
-    $$rot \ \overrightarrow{A} = \begin{vmatrix}
-        \vec{i} & \vec{j} & \vec{k} \\
-        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+
+\begin{induction}
+    [性质]
+    线性性质、有向性、可加性
+\end{induction}
+
+\begin{induction}
+    [计算]
+    (1)拆分为二重积分
+    $$\iint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy = \pm \iint\limits_{D_{yz}}Pdy dz \pm \iint\limits_{D_{zx}}Qdz dx \pm \iint\limits_{D_{xy}}Rdx dy.$$
+    (2)转换投影法(通量的定义)
+    $$\iint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy = \iint\limits_{\Sigma} \overrightarrow{F} \cdot \overrightarrow{n} dS = \pm \iint\limits_{D_{xy}}P\frac{\partial z}{\partial x} + Q\frac{\partial z}{\partial y} - R dxdy$$
+    (3)高斯公式
+    $$\oiint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy = \iiint\limits_{\Omega} \left(\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z}\right) dv$$
+    $\Sigma$为闭合曲面，$\Omega$为$\Sigma$所围成的有界空间区域，$\Sigma$的方向为外侧：
+
+    若$\Sigma$为复连通区域(如$1\leq x^2+y^2+z^2\leq 4$),则外部曲面的方向为外侧，内部曲面方向为内侧。
+\end{induction}
+\begin{note}
+    (1)(2)中每一项前面的符号由$\overrightarrow{n}$与投影轴正方向的夹角决定:
+    
+    若与$z$为锐角，则$\iint\limits_{D_{xy}}Qdx dy$前为$+$，否则为$-$;
+
+    若与$x$为锐角，则$\iint\limits_{D_{yz}}Pdy dz$前为$+$，否则为$-$;
+
+    若与$y$为锐角，则$\iint\limits_{D_{zx}}Rdz dx$前为$+$，否则为$-$。
+
+    (3)高斯公式中$\sigma$
+\end{note}
+\begin{proof}
+    (2)转换投影法:若曲面$\Sigma$可以写出$z = z(x,y)$的形式，则
+    
+    $\overrightarrow{n} = \pm \frac{\left(\frac{\partial z}{\partial x}, \frac{\partial z}{\partial y}, -1\right)}{\sqrt{1 + \left(\frac{\partial z}{\partial x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2}},$
+    $\quad dS = \sqrt{1 + \left(\frac{\partial z}{\partial x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2} dxdy$
+于是：
+    \begin{align*}
+        &\iint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy\\
+      &= \iint\limits_{\Sigma} \overrightarrow{F} \cdot \overrightarrow{n} dS \\ 
+      &= \iint\limits_{\Sigma} (P,Q,R)\cdot \overrightarrow{n} dS \\
+      &= \pm \iint\limits_{D_{xy}} (P,Q,R)\cdot \frac{\left(\frac{\partial z}{\partial x}, \frac{\partial z}{\partial y}, -1\right)}{\sqrt{1 + \left(\frac{\partial z}{\partial x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2}} \cdot \sqrt{1 + \left(\frac{\partial z}{\partial x}\right)^2 + \left(\frac{\partial z}{\partial y}\right)^2} dxdy  \\
+      &=  \pm \iint\limits_{D_{xy}} P\frac{\partial z}{\partial x} + Q\frac{\partial z}{\partial y} - R dxdy
+    \end{align*}
+    进行了“第二型曲面积分”$\rightarrow$“第一型曲面积分”$\rightarrow$“二重积分”的转化。
+\end{proof}
+
+\begin{corollary}
+    [无散度区域(无源场)的闭合曲面积分]
+    若区域$\Omega$内处处$\frac{\partial P}{\partial x} + \frac{\partial Q}{\partial y} + \frac{\partial R}{\partial z} = 0$，则对任意闭合曲面$\Sigma$，有
+$$\oiint\limits_{\Sigma} Pdy dz + Qdz dx + Rdx dy = 0.$$
+\end{corollary}
+\begin{note}
+    可以利用该推论求包含奇点的闭合曲面积分：区域$\Omega$内任一包含奇点的闭合曲面上的积分都相等.
+
+    例如：$\Sigma_1: x^2 + y^2 + z^2 = 4, \Sigma_2: x^2 + y^2 + z^2 = \varepsilon $均外侧为正方向，被积函数仅有奇点$(0,0,0)$
+
+    $$\oiint\limits_{\Sigma_1} = \oiint\limits_{\Sigma_1 + \Sigma_2^-} - \oiint\limits_{\Sigma_2^-} = 0 - \oiint\limits_{\Sigma_2^-} = \oiint\limits_{\Sigma_2}$$
+\end{note}
+
+\begin{theorem}
+    [斯托克斯公式]
+    若$\Sigma$为有向曲面，$\varGamma$为$\Sigma$的有向边界曲线，二者方向符合右手螺旋法则，则
+    $$   
+    \oint\limits_{\varGamma} Pdx + Qdy + Rdz = \iint\limits_{\Sigma}
+    \begin{vmatrix}
+        dydz & dzdx & dxdy\\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z}\\
         P & Q & R
-    \end{vmatrix}$$
-    为向量场$\overrightarrow{A}$在点$P_0$处的旋度。
-\end{definition}
-\begin{note}
-    $rot \ \overrightarrow{A} = \nabla \times \overrightarrow{A} = \left(\dfrac{\partial}{\partial x}\vec{i} + \dfrac{\partial}{\partial y}\vec{j} + \dfrac{\partial}{\partial z}\vec{k}\right) \times (P, Q, R)$
-\end{note}
-
-
-
-
-
-
-
-
-
+    \end{vmatrix}
+    = \oiint\limits_{\Sigma} \begin{vmatrix}
+        \cos \alpha & \cos \beta & \cos \gamma\\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z}\\
+        P & Q & R
+    \end{vmatrix}dS
+    $$
+    $(\cos \alpha, \cos \beta, \cos \gamma)$为$\Sigma$的单位法向量
+\end{theorem}
 
 
 
